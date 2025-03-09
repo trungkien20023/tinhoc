@@ -14,7 +14,6 @@
             margin: 0;
         }
 
-        /* Hiệu ứng Loading Page */
         #loading {
             position: fixed;
             width: 100%;
@@ -115,6 +114,7 @@
             max-height: 500px;
             overflow: hidden;
             transition: max-height 0.5s ease-in-out;
+            display: none;
         }
 
         .toggle-button {
@@ -122,6 +122,12 @@
             color: #000000;
             font-weight: bold;
             text-decoration: underline;
+        }
+
+        #clock {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -147,24 +153,36 @@
 
         <h1>Giới thiệu Nhóm</h1>
 
-        <section id="members" class="section">
-            <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
-            <ul class="member-list" id="member-list">
-                <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
-                <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
-                <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
-                <li><a href="XuanVinh.html">Trần Minh Xuân Vinh</a></li>
-                <li><a href="HongThi.html">Nguyễn Thị Hồng Thi</a></li>
-            </ul>
+        <section id="clock-section" class="section">
+            <h2>Giờ Hiện Tại</h2>
+            <div id="clock"></div>
         </section>
 
         <section id="countdown-section" class="section">
             <h2>Đếm ngược đến kỳ thi THPTQG</h2>
             <div id="countdown"></div>
         </section>
+
+        <section id="video-section" class="section">
+            <h2>Video Động Lực</h2>
+            <video width="100%" controls>
+                <source src="[ĐỘNG LỰC] Nếu bạn thay đổi chính mình, bạn có thể thay đổi cuộc sống của bạn.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
+        </section>
     </div>
 
     <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById("clock").innerHTML = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
         function updateCountdown() {
             const examDate = new Date("June 26, 2025 00:00:00").getTime();
             const now = new Date().getTime();
@@ -174,11 +192,6 @@
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
-
-        function toggleMembers() {
-            const memberList = document.getElementById("member-list");
-            memberList.style.display = (memberList.style.display === "none" || memberList.style.display === "") ? "block" : "none";
-        }
     </script>
 </body>
 </html>
