@@ -79,8 +79,15 @@
             justify-content: space-between;
         }
 
-        .section {
+        .left-section {
             width: 48%;
+        }
+
+        .right-section {
+            width: 48%;
+        }
+
+        .section {
             padding: 20px;
             background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
@@ -88,15 +95,15 @@
             margin-bottom: 20px;
         }
 
-        .member-list {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-            font-size: 20px;
+        .toggle-content {
+            display: none;
         }
 
-        .member-list li {
-            margin: 10px 0;
+        .toggle-button {
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: underline;
+            color: #007BFF;
         }
 
         /* Album ảnh */
@@ -133,28 +140,40 @@
     </header>
 
     <div class="container">
-        <section class="section">
-            <h2>Giới thiệu Nhóm</h2>
-            <p>Trang web tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
-        </section>
+        <div class="left-section">
+            <h2 class="toggle-button" onclick="toggleSection('album-content')">Album Ảnh</h2>
+            <div id="album-content" class="toggle-content">
+                <div class="album">
+                    <img src="image1.jpg" class="active" alt="Hình ảnh 1">
+                    <img src="image2.jpg" alt="Hình ảnh 2">
+                    <img src="image3.jpg" alt="Hình ảnh 3">
+                    <img src="image4.jpg" alt="Hình ảnh 4">
+                </div>
+            </div>
 
-        <section class="section">
-            <h2>Danh sách thành viên</h2>
-            <ul class="member-list">
-                <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
-                <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
-                <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
-                <li><a href="XuanVinh.html">Trần Minh Xuân Vinh</a></li>
-                <li><a href="HongThi.html">Nguyễn Thị Hồng Thi</a></li>
-            </ul>
-        </section>
-    </div>
+            <h2 class="toggle-button" onclick="toggleSection('video-content')">Video</h2>
+            <div id="video-content" class="toggle-content">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
 
-    <div class="album">
-        <img src="image1.jpg" class="active" alt="Hình ảnh 1">
-        <img src="image2.jpg" alt="Hình ảnh 2">
-        <img src="image3.jpg" alt="Hình ảnh 3">
-        <img src="image4.jpg" alt="Hình ảnh 4">
+        <div class="right-section">
+            <h2 class="toggle-button" onclick="toggleSection('intro-content')">Giới thiệu Nhóm</h2>
+            <div id="intro-content" class="toggle-content section">
+                <p>Trang web tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
+            </div>
+
+            <h2 class="toggle-button" onclick="toggleSection('members-content')">Danh sách thành viên</h2>
+            <div id="members-content" class="toggle-content section">
+                <ul>
+                    <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
+                    <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
+                    <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
+                    <li><a href="XuanVinh.html">Trần Minh Xuân Vinh</a></li>
+                    <li><a href="HongThi.html">Nguyễn Thị Hồng Thi</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -172,6 +191,11 @@
             images[index].classList.add("active");
         }
         setInterval(changeImage, 3000);
+
+        function toggleSection(id) {
+            let section = document.getElementById(id);
+            section.style.display = (section.style.display === "none" || section.style.display === "") ? "block" : "none";
+        }
     </script>
 </body>
 </html>
