@@ -7,24 +7,27 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f3f4f6;
             text-align: center;
             padding: 20px;
             margin: 0;
+            background: url() no-repeat center center fixed;
+            background-size: cover;
         }
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 80px auto 20px auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            gap: 20px;
         }
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(178, 234, 248, 0.9);
             padding: 10px 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -41,6 +44,52 @@
         .navbar a:hover {
             color: #2563eb;
         }
+        .left, .right {
+            width: 50%;
+            padding: 10px;
+        }
+        .scroll-container {
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background: #fafafa;
+        }
+        .scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #2563eb;
+            border-radius: 10px;
+        }
+        .video-item, .exercise-item {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .video-item p {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .exercise-item {
+            background: #eef2ff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .exercise-item a {
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+        .exercise-item a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -49,8 +98,71 @@
         <a href="Giải bài tập.html">Giải bài tập</a>
     </div>
     <div class="container">
-        <h1>Giải bài tập</h1>
-        <p>Trang này dành cho nội dung giải bài tập.</p>
+        <div class="left">
+            <h2>Video bài giảng</h2>
+            <div class="scroll-container">
+                <div class="video-item"><p>Bài 1</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 2</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 3</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 4</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 5</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_5" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 6</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 7</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 8</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 9</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 10</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_5" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 11</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 12</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 13</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 14</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 15</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_5" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 16</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 17</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 18</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 19</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 20</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_5" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 21</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 22</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 23</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 24</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 25</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_5" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 26</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe></div>
+                <div class="video-item"><p>Bài 27</p><iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe></div>
+                
+            </div>
+        </div>
+        <div class="right">
+            <h2>Danh sách bài tập</h2>
+            <div class="scroll-container">
+                <div class="exercise-item"><a href="bai1.html">Bài 1</a></div>
+                <div class="exercise-item"><a href="bai2.html">Bài 2</a></div>
+                <div class="exercise-item"><a href="bai3.html">Bài 3</a></div>
+                <div class="exercise-item"><a href="bai4.html">Bài 4</a></div>
+                <div class="exercise-item"><a href="bai5.html">Bài 5</a></div>
+                <div class="exercise-item"><a href="bai6.html">Bài 6</a></div>
+                <div class="exercise-item"><a href="bai7.html">Bài 7</a></div>
+                <div class="exercise-item"><a href="bai8.html">Bài 8</a></div>
+                <div class="exercise-item"><a href="bai9.html">Bài 9</a></div>
+                <div class="exercise-item"><a href="bai10.html">Bài 10</a></div>
+                <div class="exercise-item"><a href="bai11.html">Bài 11</a></div>
+                <div class="exercise-item"><a href="bai12.html">Bài 12</a></div>
+                <div class="exercise-item"><a href="bai13.html">Bài 13</a></div>
+                <div class="exercise-item"><a href="bai14.html">Bài 14</a></div>
+                <div class="exercise-item"><a href="bai15.html">Bài 15</a></div>
+                <div class="exercise-item"><a href="bai16.html">Bài 16</a></div>
+                <div class="exercise-item"><a href="bai17.html">Bài 17</a></div>
+                <div class="exercise-item"><a href="bai18.html">Bài 18</a></div>
+                <div class="exercise-item"><a href="bai19.html">Bài 19</a></div>
+                <div class="exercise-item"><a href="bai20.html">Bài 20</a></div>
+                <div class="exercise-item"><a href="bai21.html">Bài 21</a></div>
+                <div class="exercise-item"><a href="bai22.html">Bài 22</a></div>
+                <div class="exercise-item"><a href="bai23.html">Bài 23</a></div>
+                <div class="exercise-item"><a href="bai24.html">Bài 24</a></div>
+                <div class="exercise-item"><a href="bai25.html">Bài 25</a></div>
+                <div class="exercise-item"><a href="bai26.html">Bài 26</a></div>
+                <div class="exercise-item"><a href="bai27.html">Bài 27 </a></div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
