@@ -10,8 +10,16 @@
             text-align: center;
             padding: 20px;
             margin: 0;
-            background: url(2707_background-hoc-tap-full-hd4.jpg) no-repeat center center fixed;
-            background-size: cover;
+            overflow: hidden;
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
         .container {
             max-width: 1200px;
@@ -44,55 +52,13 @@
         .navbar a:hover {
             color: #2563eb;
         }
-        .left, .right {
-            width: 50%;
-            padding: 10px;
-        }
-        .scroll-container {
-            max-height: 500px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            background: #fafafa;
-        }
-        .scroll-container::-webkit-scrollbar {
-            width: 8px;
-        }
-        .scroll-container::-webkit-scrollbar-thumb {
-            background: #2563eb;
-            border-radius: 10px;
-        }
-        .video-item, .exercise-item {
-            text-align: left;
-            margin-bottom: 15px;
-        }
-        .video-item p {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .video-container iframe {
-            width: 100%;
-            height: 180px;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
-        .exercise-item {
-            background: #eef2ff;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .exercise-item a {
-            text-decoration: none;
-            color: #2563eb;
-            font-weight: bold;
-        }
-        .exercise-item a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
+    <video class="video-background" autoplay muted loop>
+        <source src="9584-220312371.mp4" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ thẻ video.
+    </video>
     <div class="navbar">
         <a href="index.html">Trang chủ</a>
         <a href="Giải bài tập.html">Giải bài tập</a>
