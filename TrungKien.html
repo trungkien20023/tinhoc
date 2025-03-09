@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Văn A - Trưởng nhóm</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Dancing Script', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ebe825;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out;
+        }
+        
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease-out;
+        }
+        
+        .banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url(image/4641611401ecb508c625eebe448da663.gif) no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+        .container {
+            display: flex;
+            max-width: 900px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 100px auto;
+            position: relative;
+            z-index: 1;
+        }
+        .left-section {
+            width: 50%;
+            padding: 20px;
+            text-align: left;
+            background: url(image/900w-X3Wkz-N3IPk.webp) no-repeat center center;
+            background-size: cover;
+        }
+        .right-section {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: url(image/anh-nen-dong-dep-nhat_043717441.gif) no-repeat center center;
+            background-size: cover;
+            padding: 20px;
+        }
+        .right-section img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 8px solid #2563eb;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.7);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            object-fit: cover;
+            object-position: center;
+        }
+        .right-section img:hover {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.9);
+        }
+        audio {
+            margin-top: 15px;
+        }
+        .toggle {
+            cursor: pointer;
+            color: #2563eb;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            background-color: #eef2ff;
+            border: 2px solid #2563eb;
+            border-radius: 8px;
+            padding: 0;
+            transition: max-height 0.5s ease-out, padding 0.3s ease-out;
+        }
+        .content.open {
+            max-height: 300px;
+            padding: 10px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #1e40af;
+        }
+        .social-icons {
+            margin-top: 15px;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+            border: none;
+        }
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            content.classList.toggle("open");
+        }
+        
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("loading").style.display = "none";
+            }, 1000);
+        };
+    </script>
+</head>
+<body>
+    <div id="loading">Đang tải...</div>
+    <div class="banner"></div>
+    <div class="container">
+        <div class="left-section">
+            <h1>Trần Huỳnh Trung Kiên</h1>
+            <h2>Thành viên</h2>
+            
+            <h3 class="toggle" onclick="toggleContent('bio')">Giới thiệu</h3>
+            <p id="bio" class="content"> Mình tên là Trung Kiên, một học sinh đầy năng động và ham học hỏi. Sở thích chính của mình là đọc sách, và mình luôn muốn khám phá thêm về thế giới xung quanh.
+                Mình có đam mê học tập và luôn cố gắng hết mình để đạt được thành công trong các môn học. Ngoài ra, mình cũng thích tham gia vào các hoạt động xã hội và từ thiện để tạo ra sự tích cực trong cộng đồng.  
+                Cảm ơn mọi người đã dành thời gian đọc về mình!</p>
+            <h3 class="toggle" onclick="toggleContent('bio1')">Thành tích học tập</h3>
+            <p id="bio1" class="content">Cựu thiếu nhi</p>
+            <p>Email: tranhtrungkiennpt1@gmail.com</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/tran.kien.271121?locale=vi_VN" target="_blank">
+                    <img src="image/2023_Facebook_icon.svg.png" alt="Facebook">
+                </a>
+            </div>
+            <a class="btn" href="index.html">Quay lại</a>
+        </div>
+        <div class="right-section">
+            <img src="image/avt.jpg" alt="Trần Huỳnh Trung Kiên">
+            <audio controls autoplay>
+                <source src="music/Apollo-NightcoreTimebelle-6261015.mp3" type="audio/mpeg">
+                Trình duyệt của bạn không hỗ trợ phát nhạc.
+            </audio>
+        </div>
+    </div>
+</body>
+</html>
