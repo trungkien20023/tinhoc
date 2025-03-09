@@ -196,6 +196,12 @@
             var memberList = document.getElementById("member-list");
             memberList.style.display = (memberList.style.display === "none" || memberList.style.display === "") ? "block" : "none";
         }
+
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("loading").classList.add("hidden");
+            }, 1000);
+        };
     </script>
 </body>
 </html>
