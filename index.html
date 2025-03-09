@@ -14,6 +14,7 @@
             margin: 0;
         }
 
+        /* Hiệu ứng Loading Page */
         #loading {
             position: fixed;
             width: 100%;
@@ -26,11 +27,12 @@
             font-weight: bold;
             color: #3498db;
             z-index: 9999;
-            animation: fadeOut 1s ease-out forwards;
+            transition: opacity 0.8s ease-out;
         }
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0; visibility: hidden; }
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease-out;
         }
 
         .video-background {
@@ -55,6 +57,7 @@
             z-index: 1;
         }
 
+        /* Sửa lỗi tràn banner */
         .banner {
             width: 100%;
             height: 300px;
@@ -70,6 +73,10 @@
             border-radius: 10px;
         }
 
+        h1, h2, p {
+            margin-bottom: 15px;
+        }
+
         .navbar {
             position: fixed;
             top: 0;
@@ -79,14 +86,13 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
             z-index: 1000;
         }
 
         .navbar a {
             text-decoration: none;
             color: #333;
-            margin: 10px 15px;
+            margin: 0 15px;
             font-weight: bold;
             transition: color 0.3s;
         }
@@ -102,19 +108,26 @@
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(5px);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .visible {
             opacity: 1;
             transform: translateY(0);
         }
 
+        /* Căn giữa danh sách thành viên, bỏ chấm đầu dòng, tăng cỡ chữ */
         .member-list {
-            list-style: none;
+            list-style: none; /* Bỏ chấm đầu dòng */
             padding: 0;
-            text-align: center;
-            font-size: 20px;
-            max-height: 500px;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
+            text-align: center; /* Căn giữa */
+            font-size: 20px; /* Tăng cỡ chữ */
             display: none;
+        }
+        .member-list li {
+            margin: 10px 0; /* Thêm khoảng cách giữa các mục */
         }
 
         .toggle-button {
@@ -123,20 +136,13 @@
             font-weight: bold;
             text-decoration: underline;
         }
-
-        #clock {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
-    <div id="loading">Đang tải...</div>
+    <div id="loading">Đang tải...</div> <!-- Màn hình loading -->
 
     <video class="video-background" autoplay muted loop>
         <source src="111508-691222995.mp4" type="video/mp4">
-        Trình duyệt của bạn không hỗ trợ video.
     </video>
 
     <div class="navbar">
@@ -153,45 +159,63 @@
 
         <h1>Giới thiệu Nhóm</h1>
 
-        <section id="clock-section" class="section">
-            <h2>Giờ Hiện Tại</h2>
-            <div id="clock"></div>
+        <section id="intro" class="section visible">
+            <h3>Trang web tạo ra nhầm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</h3>
+        </section>
+
+        <section id="members" class="section">
+            <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
+            <ul class="member-list" id="member-list">
+                <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
+                <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
+                <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
+                <li><a href="XuanVinh.html">Trần Minh Xuân Vinh</a></li>
+                <li><a href="HongThi.html">Nguyễn Thị Hồng Thi</a></li>
+            </ul>
         </section>
 
         <section id="countdown-section" class="section">
             <h2>Đếm ngược đến kỳ thi THPTQG</h2>
-            <div id="countdown"></div>
+            <div id="countdown" class="countdown"></div>
         </section>
 
-        <section id="video-section" class="section">
-            <h2>Video Động Lực</h2>
-            <video width="100%" controls>
-                <source src="[ĐỘNG LỰC] Nếu bạn thay đổi chính mình, bạn có thể thay đổi cuộc sống của bạn.mp4" type="video/mp4">
-                Trình duyệt của bạn không hỗ trợ video.
-            </video>
+        <section id="entertainment" class="section">
+            <iframe width="100%" height="315" src="[ĐỘNG LỰC] Nếu bạn thay đổi chính mình, bạn có thể thay đổi cuộc sống của bạn.mp4" frameborder="0" allowfullscreen></iframe>
         </section>
     </div>
 
     <script>
-        function updateClock() {
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
-            document.getElementById("clock").innerHTML = `${hours}:${minutes}:${seconds}`;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
         function updateCountdown() {
             const examDate = new Date("June 26, 2025 00:00:00").getTime();
             const now = new Date().getTime();
             const distance = examDate - now;
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            document.getElementById("countdown").innerHTML = `Còn ${days} ngày`;
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerHTML = `Còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
         }
-        setInterval(updateCountdown, 1000);
         updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        document.addEventListener("scroll", function() {
+            document.querySelectorAll(".section").forEach(section => {
+                if (section.getBoundingClientRect().top < window.innerHeight) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+
+        function toggleMembers() {
+            var memberList = document.getElementById("member-list");
+            memberList.style.display = (memberList.style.display === "none" || memberList.style.display === "") ? "block" : "none";
+        }
+
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("loading").classList.add("hidden");
+            }, 1000);
+        };
     </script>
 </body>
 </html>
