@@ -26,11 +26,11 @@
             font-weight: bold;
             color: #3498db;
             z-index: 9999;
-            transition: opacity 0.8s ease-out;
+            transition: opacity 0.8s ease-out, visibility 0.8s;
         }
         .hidden {
             opacity: 0;
-            pointer-events: none;
+            visibility: hidden;
         }
 
         .video-background {
@@ -185,6 +185,12 @@
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("loading").classList.add("hidden");
+            }, 1000);
+        };
     </script>
 </body>
 </html>
