@@ -10,6 +10,8 @@
             text-align: center;
             margin: 0;
             overflow-x: hidden;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         /* Hiệu ứng Loading Page */
@@ -150,7 +152,6 @@
                 <img src="image2.jpg" alt="Hình ảnh 2">
                 <img src="image3.jpg" alt="Hình ảnh 3">
                 <img src="image4.jpg" alt="Hình ảnh 4">
-                <div id="countdown"></div>
             </div>
 
             <h2>Video</h2>
@@ -178,6 +179,11 @@
         </div>
     </div>
 
+    <div class="section" id="countdown-section">
+        <h2>Đếm ngược đến kỳ thi THPTQG</h2>
+        <div id="countdown"></div>
+    </div>
+
     <script>
         window.onload = function() {
             setTimeout(function() {
@@ -199,18 +205,13 @@
             const now = new Date().getTime();
             const distance = examDate - now;
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            document.getElementById("countdown").innerText = `Còn ${days} ngày`;
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerText = `Còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
         }
         updateCountdown();
-        setInterval(updateCountdown, 86400000);
-
-        document.addEventListener("scroll", function() {
-            document.querySelectorAll(".section").forEach(section => {
-                if (section.getBoundingClientRect().top < window.innerHeight) {
-                    section.classList.add("visible");
-                }
-            });
-        });
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
