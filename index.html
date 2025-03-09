@@ -8,10 +8,8 @@
         body {
             font-family: 'Dancing Script', cursive;
             text-align: center;
-            padding: 20px;
-            transition: all 0.5s ease;
-            overflow-x: hidden;
             margin: 0;
+            overflow-x: hidden;
         }
 
         /* Hiệu ứng Loading Page */
@@ -35,8 +33,21 @@
             transition: opacity 0.8s ease-out;
         }
 
-        .video-background {
-            position: fixed;
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -45,143 +56,129 @@
             z-index: -1;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
             position: relative;
             z-index: 1;
         }
 
-        /* Sửa lỗi tràn banner */
-        .banner {
-            width: 100%;
-            height: 300px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            overflow: hidden;
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1.5s ease-out forwards;
         }
 
-        .banner video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
+        .fade-in.delay {
+            animation-delay: 0.5s;
         }
 
-        h1, h2, p {
-            margin-bottom: 15px;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
+        /* Thanh điều hướng */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(174, 207, 218, 0.9);
-            padding: 10px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            background: transparent;
+            transition: background 0.5s;
             display: flex;
             justify-content: center;
             z-index: 1000;
         }
 
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
         .navbar a {
             text-decoration: none;
-            color: #333;
+            color: #fff;
             margin: 0 15px;
             font-weight: bold;
             transition: color 0.3s;
         }
 
-        .navbar a:hover {
-            color: #96b0e7;
+        .navbar.scrolled a {
+            color: #333;
         }
 
-        .section {
-            margin-bottom: 30px;
+        /* Nội dung chính */
+        .container {
+            max-width: 900px;
+            margin: auto;
             padding: 20px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s, transform 1s;
         }
 
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Căn giữa danh sách thành viên, bỏ chấm đầu dòng, tăng cỡ chữ */
         .member-list {
-            list-style: none; /* Bỏ chấm đầu dòng */
+            list-style: none;
             padding: 0;
-            text-align: center; /* Căn giữa */
-            font-size: 20px; /* Tăng cỡ chữ */
+            text-align: center;
+            font-size: 20px;
             display: none;
         }
+
         .member-list li {
-            margin: 10px 0; /* Thêm khoảng cách giữa các mục */
+            margin: 10px 0;
         }
 
         .toggle-button {
             cursor: pointer;
-            color: #000000;
+            color: #000;
             font-weight: bold;
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div id="loading">Đang tải...</div> <!-- Màn hình loading -->
-
-    <video class="video-background" autoplay muted loop>
-        <source src="111508-691222995.mp4" type="video/mp4">
-    </video>
+    <div id="loading">Đang tải...</div>
 
     <div class="navbar">
         <a href="index.html">Trang chủ</a>
         <a href="Giải bài tập.html">Giải bài tập</a>
     </div>
 
-    <div class="container">
-        <div class="banner">
-            <video autoplay muted loop>
-                <source src="964df1d1e8c1bc21f634c7e268a2748e.mp4" type="video/mp4">
-            </video>
+    <header class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="111508-691222995.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fade-in">Chào mừng đến với Nhóm</h1>
+            <p class="fade-in delay">Nơi cùng nhau rèn luyện và phát triển</p>
         </div>
+    </header>
 
-        <h1>Giới thiệu Nhóm</h1>
+    <div class="container">
+        <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
+        <ul class="member-list" id="member-list">
+            <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
+            <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
+            <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
+            <li><a href="XuanVinh.html">Trần Minh Xuân Vinh</a></li>
+            <li><a href="HongThi.html">Nguyễn Thị Hồng Thi</a></li>
+        </ul>
 
-        <section id="intro" class="section visible">
-            <h3>Trang web tạo ra nhầm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</h3>
-        </section>
-
-        <section id="members" class="section">
-            <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
-            <ul class="member-list" id="member-list">
-                <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
-                <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
-                <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
-                <li><a href="XuanVinh.html">Trần Minh Xuân Vinh</a></li>
-                <li><a href="HongThi.html">Nguyễn Thị Hồng Thi</a></li>
-            </ul>
-        </section>
-
-        <section id="countdown-section" class="section">
-            <h2>Đếm ngược đến kỳ thi THPTQG</h2>
-            <div id="countdown" class="countdown"></div>
-        </section>
-
-        <section id="entertainment" class="section">
-            <iframe width="100%" height="315" src="[ĐỘNG LỰC] Nếu bạn thay đổi chính mình, bạn có thể thay đổi cuộc sống của bạn.mp4" frameborder="0" allowfullscreen></iframe>
-        </section>
+        <h2>Đếm ngược đến kỳ thi THPTQG</h2>
+        <div id="countdown"></div>
     </div>
 
     <script>
@@ -190,32 +187,15 @@
             const now = new Date().getTime();
             const distance = examDate - now;
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("countdown").innerHTML = `Còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
+            document.getElementById("countdown").innerHTML = `Còn ${days} ngày`;
         }
         updateCountdown();
         setInterval(updateCountdown, 1000);
-
-        document.addEventListener("scroll", function() {
-            document.querySelectorAll(".section").forEach(section => {
-                if (section.getBoundingClientRect().top < window.innerHeight) {
-                    section.classList.add("visible");
-                }
-            });
-        });
 
         function toggleMembers() {
             var memberList = document.getElementById("member-list");
             memberList.style.display = (memberList.style.display === "none" || memberList.style.display === "") ? "block" : "none";
         }
-
-        window.onload = function() {
-            setTimeout(function() {
-                document.getElementById("loading").classList.add("hidden");
-            }, 1000);
-        };
     </script>
 </body>
 </html>
