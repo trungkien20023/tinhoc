@@ -9,10 +9,29 @@
             font-family: 'Dancing Script', cursive;
             text-align: center;
             padding: 20px;
-            margin: 0;
+            transition: all 0.5s ease;
             overflow-x: hidden;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+            margin: 0;
+        }
+
+        /* Hiệu ứng Loading Page */
+        #loading {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+            z-index: 9999;
+            animation: fadeOut 1s ease-out forwards;
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
         }
 
         .video-background {
@@ -23,8 +42,6 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
         }
 
         .container {
@@ -37,9 +54,6 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             position: relative;
             z-index: 1;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
         }
 
         .banner {
@@ -48,9 +62,6 @@
             border-radius: 10px;
             margin-bottom: 20px;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 1s ease-in-out 0.5s, transform 1s ease-in-out 0.5s;
         }
 
         .banner video {
@@ -58,23 +69,6 @@
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
-        }
-
-        .section {
-            margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-        }
-
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .navbar {
@@ -86,13 +80,14 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             z-index: 1000;
         }
 
         .navbar a {
             text-decoration: none;
             color: #333;
-            margin: 0 15px;
+            margin: 10px 15px;
             font-weight: bold;
             transition: color 0.3s;
         }
@@ -100,11 +95,53 @@
         .navbar a:hover {
             color: #96b0e7;
         }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .member-list {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            font-size: 20px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s, max-height 0.5s ease-in-out;
+        }
+        .member-list.show {
+            opacity: 1;
+            max-height: 500px;
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            color: #000000;
+            font-weight: bold;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+    <div id="loading">Đang tải...</div>
+
     <video class="video-background" autoplay muted loop>
         <source src="111508-691222995.mp4" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ video.
     </video>
 
     <div class="navbar">
@@ -119,14 +156,15 @@
             </video>
         </div>
 
-        <section class="section">
-            <h1>Giới thiệu Nhóm</h1>
-            <h3>Trang web tạo ra nhằm hoàn thành bài tập và rèn luyện kỹ năng lập trình.</h3>
+        <h1>Giới thiệu Nhóm</h1>
+
+        <section id="intro" class="section visible">
+            <h3>Trang web tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</h3>
         </section>
 
-        <section class="section">
-            <h2>Danh sách thành viên</h2>
-            <ul>
+        <section id="members" class="section">
+            <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
+            <ul class="member-list" id="member-list">
                 <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
                 <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
                 <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
@@ -135,38 +173,29 @@
             </ul>
         </section>
 
-        <section class="section">
+        <section id="countdown-section" class="section">
             <h2>Đếm ngược đến kỳ thi THPTQG</h2>
             <div id="countdown"></div>
+        </section>
+
+        <section id="entertainment" class="section">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
         </section>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.style.opacity = "1";
-            document.querySelector(".video-background").style.opacity = "1";
-            setTimeout(() => {
-                document.querySelector(".banner").style.opacity = "1";
-                document.querySelector(".banner").style.transform = "translateY(0)";
-            }, 1000);
-            setTimeout(() => {
-                document.querySelector(".container").style.opacity = "1";
-                document.querySelector(".container").style.transform = "translateY(0)";
-            }, 1500);
-        });
-
         function updateCountdown() {
             const examDate = new Date("June 26, 2025 00:00:00").getTime();
             const now = new Date().getTime();
             const distance = examDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("countdown").innerText = `Còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
+            document.getElementById("countdown").innerHTML = `Còn ${Math.floor(distance / (1000 * 60 * 60 * 24))} ngày`;
         }
-        updateCountdown();
         setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        function toggleMembers() {
+            document.getElementById("member-list").classList.toggle("show");
+        }
     </script>
 </body>
 </html>
