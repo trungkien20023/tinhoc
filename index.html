@@ -41,6 +41,24 @@
             transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
         }
 
+        .banner {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+        }
+
+        .banner video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
         .navbar {
             position: fixed;
             top: 0;
@@ -92,6 +110,10 @@
             display: none;
         }
 
+        .member-list li {
+            margin: 10px 0;
+        }
+
         .toggle-button {
             cursor: pointer;
             color: #000;
@@ -102,7 +124,7 @@
 </head>
 <body>
     <video class="video-background" autoplay muted loop>
-        <source src="964df1d1e8c1bc21f634c7e268a2748e.mp4" type="video/mp4">
+        <source src="background.mp4" type="video/mp4">
     </video>
 
     <div class="navbar">
@@ -111,6 +133,12 @@
     </div>
 
     <div class="container">
+        <div class="banner">
+            <video autoplay muted loop>
+                <source src="964df1d1e8c1bc21f634c7e268a2748e.mp4" type="video/mp4">
+            </video>
+        </div>
+
         <h1>Giới thiệu Nhóm</h1>
 
         <section id="intro" class="section">
@@ -132,13 +160,25 @@
             <h2>Đếm ngược đến kỳ thi THPTQG</h2>
             <div id="countdown" class="countdown"></div>
         </section>
-
-        <section id="entertainment" class="section">
-            <iframe width="100%" height="315" src="[ĐỘNG LỰC] Nếu bạn thay đổi chính mình, bạn có thể thay đổi cuộc sống của bạn.mp4" frameborder="0" allowfullscreen></iframe>
-        </section>
     </div>
 
     <script>
+        window.onload = function() {
+            document.body.style.opacity = "1";
+            setTimeout(() => {
+                document.querySelector(".container").style.opacity = "1";
+                document.querySelector(".container").style.transform = "translateY(0)";
+                document.querySelector(".banner").style.opacity = "1";
+                document.querySelector(".banner").style.transform = "translateY(0)";
+                document.querySelector(".navbar").style.opacity = "1";
+            }, 1000);
+        };
+
+        function toggleMembers() {
+            var memberList = document.getElementById("member-list");
+            memberList.style.display = (memberList.style.display === "none" || memberList.style.display === "") ? "block" : "none";
+        }
+
         function updateCountdown() {
             const examDate = new Date("June 26, 2025 00:00:00").getTime();
             const now = new Date().getTime();
@@ -149,30 +189,8 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             document.getElementById("countdown").innerHTML = `Còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
         }
-        setInterval(updateCountdown, 1000);
         updateCountdown();
-
-        document.addEventListener("scroll", function() {
-            document.querySelectorAll(".section").forEach(section => {
-                if (section.getBoundingClientRect().top < window.innerHeight) {
-                    section.classList.add("visible");
-                }
-            });
-        });
-
-        function toggleMembers() {
-            var memberList = document.getElementById("member-list");
-            memberList.style.display = (memberList.style.display === "none" || memberList.style.display === "") ? "block" : "none";
-        }
-
-        window.onload = function() {
-            document.body.style.opacity = "1";
-            setTimeout(() => {
-                document.querySelector(".container").style.opacity = "1";
-                document.querySelector(".container").style.transform = "translateY(0)";
-                document.querySelector(".navbar").style.opacity = "1";
-            }, 1000);
-        };
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
