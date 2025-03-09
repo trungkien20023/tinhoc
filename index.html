@@ -103,12 +103,6 @@
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(5px);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s, transform 1s;
-        }
-
-        .visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -118,14 +112,9 @@
             padding: 0;
             text-align: center;
             font-size: 20px;
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.5s, max-height 0.5s ease-in-out;
-        }
-        .member-list.show {
-            opacity: 1;
             max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
         }
 
         .toggle-button {
@@ -158,10 +147,6 @@
 
         <h1>Giới thiệu Nhóm</h1>
 
-        <section id="intro" class="section visible">
-            <h3>Trang web tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</h3>
-        </section>
-
         <section id="members" class="section">
             <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
             <ul class="member-list" id="member-list">
@@ -177,10 +162,6 @@
             <h2>Đếm ngược đến kỳ thi THPTQG</h2>
             <div id="countdown"></div>
         </section>
-
-        <section id="entertainment" class="section">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-        </section>
     </div>
 
     <script>
@@ -188,13 +169,15 @@
             const examDate = new Date("June 26, 2025 00:00:00").getTime();
             const now = new Date().getTime();
             const distance = examDate - now;
-            document.getElementById("countdown").innerHTML = `Còn ${Math.floor(distance / (1000 * 60 * 60 * 24))} ngày`;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("countdown").innerHTML = `Còn ${days} ngày`;
         }
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
         function toggleMembers() {
-            document.getElementById("member-list").classList.toggle("show");
+            const memberList = document.getElementById("member-list");
+            memberList.style.display = (memberList.style.display === "none" || memberList.style.display === "") ? "block" : "none";
         }
     </script>
 </body>
