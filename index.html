@@ -93,17 +93,14 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
         }
 
-        .toggle-content {
-            display: none;
-        }
-
-        .toggle-button {
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: underline;
-            color: #007BFF;
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Album ảnh */
@@ -123,6 +120,12 @@
         .album img.active {
             display: block;
         }
+
+        #countdown {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -141,30 +144,29 @@
 
     <div class="container">
         <div class="left-section">
-            <h2 class="toggle-button" onclick="toggleSection('album-content')">Album Ảnh</h2>
-            <div id="album-content" class="toggle-content">
-                <div class="album">
-                    <img src="image1.jpg" class="active" alt="Hình ảnh 1">
-                    <img src="image2.jpg" alt="Hình ảnh 2">
-                    <img src="image3.jpg" alt="Hình ảnh 3">
-                    <img src="image4.jpg" alt="Hình ảnh 4">
-                </div>
+            <h2>Album Ảnh</h2>
+            <div class="album section">
+                <img src="image1.jpg" class="active" alt="Hình ảnh 1">
+                <img src="image2.jpg" alt="Hình ảnh 2">
+                <img src="image3.jpg" alt="Hình ảnh 3">
+                <img src="image4.jpg" alt="Hình ảnh 4">
+                <div id="countdown"></div>
             </div>
 
-            <h2 class="toggle-button" onclick="toggleSection('video-content')">Video</h2>
-            <div id="video-content" class="toggle-content">
+            <h2>Video</h2>
+            <div class="section">
                 <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 
         <div class="right-section">
-            <h2 class="toggle-button" onclick="toggleSection('intro-content')">Giới thiệu Nhóm</h2>
-            <div id="intro-content" class="toggle-content section">
+            <h2>Giới thiệu Nhóm</h2>
+            <div class="section">
                 <p>Trang web tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
             </div>
 
-            <h2 class="toggle-button" onclick="toggleSection('members-content')">Danh sách thành viên</h2>
-            <div id="members-content" class="toggle-content section">
+            <h2>Danh sách thành viên</h2>
+            <div class="section">
                 <ul>
                     <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
                     <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
@@ -192,10 +194,23 @@
         }
         setInterval(changeImage, 3000);
 
-        function toggleSection(id) {
-            let section = document.getElementById(id);
-            section.style.display = (section.style.display === "none" || section.style.display === "") ? "block" : "none";
+        function updateCountdown() {
+            const examDate = new Date("June 26, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = examDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("countdown").innerText = `Còn ${days} ngày`;
         }
+        updateCountdown();
+        setInterval(updateCountdown, 86400000);
+
+        document.addEventListener("scroll", function() {
+            document.querySelectorAll(".section").forEach(section => {
+                if (section.getBoundingClientRect().top < window.innerHeight) {
+                    section.classList.add("visible");
+                }
+            });
+        });
     </script>
 </body>
 </html>
