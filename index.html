@@ -81,33 +81,61 @@
             0% { opacity: 0; transform: translateY(-20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-        /* Sections */
-        .section {
-            padding: 100px 20px;
+        /* Section Layout */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 50px;
+        }
+        .left, .right {
+            width: 48%;
+        }
+        /* Flip Card */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 200px;
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
             text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
         }
-        /* Countdown */
-        .countdown {
-            font-size: 24px;
-            font-weight: bold;
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
         }
-        /* Member List */
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+        .flip-card-front {
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flip-card-back {
+            background: #2ecc71;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotateY(180deg);
+        }
         .member-list {
             list-style: none;
-            display: none;
-        }
-        .toggle-button {
-            cursor: pointer;
-            color: #fff;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 0, 0.7);
+            padding: 0;
             text-align: center;
-            padding: 10px;
-            color: #fff;
+        }
+        .member-list li {
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -127,35 +155,39 @@
         </div>
     </div>
     
-    <section class="section" id="intro">
-        <h2>Giới thiệu</h2>
-        <p>Trang web này tạo ra nhằm mục đích hoàn thành các bài tập và rèn luyện kỹ năng lập trình.</p>
-    </section>
+    <div class="container">
+        <div class="left">
+            <h2>Giới thiệu</h2>
+            <p>Trang web này tạo ra nhằm mục đích hoàn thành các bài tập và rèn luyện kỹ năng lập trình.</p>
+        </div>
+        <div class="right">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">Thành viên</div>
+                    <div class="flip-card-back">
+                        <ul class="member-list">
+                            <li><a href="kien.html">Trần Huỳnh Trung Kiên</a></li>
+                            <li><a href="nguyen.html">Phạm Khôi Nguyên</a></li>
+                            <li><a href="nhi.html">Hồ Trần Ái Nhi</a></li>
+                            <li><a href="vinh.html">Trần Minh Xuân Vinh</a></li>
+                            <li><a href="thi.html">Nguyễn Thị Hồng Thi</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    <section class="section" id="countdown-section">
-        <h2>Đếm ngược đến kỳ thi THPTQG</h2>
-        <div id="countdown" class="countdown"></div>
-    </section>
-    
-    <section class="section" id="members">
-        <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
-        <ul class="member-list" id="member-list">
-            <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
-            <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
-            <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
-            <li><a href="XuanVinh.html">Trần Minh Xuân Vinh</a></li>
-            <li><a href="HongThi.html">Nguyễn Thị Hồng Thi</a></li>
-        </ul>
-    </section>
-    
-    <section class="section" id="video-section">
-        <h2>Video giải trí</h2>
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-    </section>
-    
-    <footer>
-        <p>© 2025 Website của chúng tôi</p>
-    </footer>
+    <div class="container">
+        <div class="left">
+            <h2>Đếm ngược</h2>
+            <div id="countdown"></div>
+        </div>
+        <div class="right">
+            <h2>Video</h2>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
     
     <script>
         function updateCountdown() {
@@ -170,28 +202,6 @@
         }
         updateCountdown();
         setInterval(updateCountdown, 1000);
-        
-        function toggleMembers() {
-            let memberList = document.getElementById("member-list");
-            if (memberList.style.display === "none" || memberList.style.display === "") {
-                memberList.style.display = "block";
-                gsap.from(memberList, { opacity: 0, y: 20, duration: 0.5 });
-            } else {
-                memberList.style.display = "none";
-            }
-        }
-        
-        let lastScrollTop = 0;
-        window.addEventListener("scroll", function() {
-            let navbar = document.getElementById("navbar");
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop) {
-                navbar.style.top = "-60px";
-            } else {
-                navbar.style.top = "0";
-            }
-            lastScrollTop = scrollTop;
-        });
     </script>
 </body>
 </html>
