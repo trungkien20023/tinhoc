@@ -28,7 +28,7 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.5; /* Make the background less prominent */
+            opacity: 0.5;
         }
 
         /* Navbar */
@@ -55,11 +55,39 @@
             color: #3498db;
         }
 
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        /* Left Section */
+        .left-section {
+            flex: 1;
+            margin-right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Right Section */
+        .right-section {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
         /* Section Styles */
         .section {
-            padding: 100px 20px;
+            padding: 50px 20px;
             background: rgba(0, 0, 0, 0.6);
-            margin-top: 80px;
+            margin-top: 20px;
+            border-radius: 10px;
             transition: opacity 1s, transform 1s;
             opacity: 0;
             transform: translateY(50px);
@@ -117,12 +145,21 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .left-section, .right-section {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
             .navbar a {
                 font-size: 14px;
             }
 
             .section {
-                padding: 50px 10px;
+                padding: 30px 10px;
             }
         }
     </style>
@@ -139,13 +176,22 @@
         <a href="Giải bài tập.html">Giải bài tập</a>
     </nav>
 
-    <!-- Section 1: Introduction -->
-    <section id="home" class="section home-section visible">
-        <h1>Chào mừng đến với website của chúng tôi!</h1>
-        <p>Trang web này tạo ra nhầm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
-    </section>
+    <!-- Content Wrapper with Left and Right Sections -->
+    <div class="content-wrapper">
+        <!-- Left Section -->
+        <div class="left-section">
+            <h1>Chào mừng đến với website của chúng tôi!</h1>
+            <p>Trang web này tạo ra nhầm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
+        </div>
 
-    <!-- Section 2: Member List -->
+        <!-- Right Section -->
+        <div class="right-section">
+            <h2>Thông tin bổ sung</h2>
+            <p>Thông tin chi tiết sẽ được hiển thị ở đây, ví dụ như các video giải trí, công cụ học tập, và các tài nguyên khác.</p>
+        </div>
+    </div>
+
+    <!-- Section 1: Member List -->
     <section id="members" class="section">
         <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
         <ul class="member-list" id="member-list">
@@ -157,13 +203,13 @@
         </ul>
     </section>
 
-    <!-- Section 3: Countdown Timer -->
+    <!-- Section 2: Countdown Timer -->
     <section id="countdown-section" class="section">
         <h2>Đếm ngược đến kỳ thi THPTQG</h2>
         <div id="countdown" class="countdown"></div>
     </section>
 
-    <!-- Section 4: Entertainment -->
+    <!-- Section 3: Entertainment -->
     <section id="entertainment" class="section">
         <iframe width="100%" height="315" src="[ĐỘNG LỰC] Nếu bạn thay đổi chính mình, bạn có thể thay đổi cuộc sống của bạn.mp4" frameborder="0" allowfullscreen></iframe>
     </section>
