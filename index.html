@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            background-color: #f0f0f0;
         }
 
         /* Phần đầu trang với video nền */
@@ -125,6 +126,7 @@
             background-position: center;
             padding: 20px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .section div h2 {
@@ -137,6 +139,11 @@
         .section div p {
             color: white;
             font-size: 18px;
+        }
+
+        .section div:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
         }
 
         /* Phần Danh sách nhóm và Đếm ngược */
@@ -155,6 +162,12 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
         }
 
         .member-list {
@@ -193,34 +206,6 @@
             transform: scale(1.1);
         }
 
-        /* Nền cho phần cuối trang */
-        .footer-background {
-            position: relative;
-            background: rgba(0, 0, 0, 0.3); /* Nền tối nhẹ để video không che khuất nội dung */
-            padding: 60px 0;
-            text-align: center;
-            color: white;
-        }
-
-        /* Video footer điều chỉnh kích thước */
-        .footer-video {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%); /* Đảm bảo video luôn căn giữa */
-            width: 80%; /* Điều chỉnh kích thước video theo phần trăm chiều rộng */
-            height: auto; /* Tự động điều chỉnh chiều cao dựa trên chiều rộng */
-            object-fit: cover; /* Đảm bảo video không bị kéo giãn */
-            z-index: -1; /* Để video nằm phía sau nội dung */
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 1;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
         /* Hiệu ứng Loading */
         #loading {
             position: fixed;
@@ -241,6 +226,16 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.8s ease-out;
+        }
+
+        /* Hiệu ứng khi cuộn trang */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
         }
 
         /* Media Query cho màn hình điện thoại di động */
@@ -327,7 +322,7 @@
         <p>Trang web được tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
 
         <!-- Chia thành ba phần dưới -->
-        <div class="section">
+        <div class="section fade-in">
             <!-- Phần 1: Văn bản -->
             <div class="section-background" style="background-image: url('path/to/your-image1.jpg');">
                 <h2>Phần 1: Văn bản</h2>
@@ -337,7 +332,7 @@
             <!-- Phần 2: Video -->
             <div class="section-background" style="background-image: url('path/to/your-image2.jpg');">
                 <h2>Phần 2: Video</h2>
-                <video class="responsive-video" controls>
+                <video class="responsive-video" controls width="100%" height="auto">
                     <source src="Đừng Nghĩ Nữa - Làm Tới Đi _ Video Truyền Động Lực _ Phạm Ngọc Anh - Mr Why.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -358,7 +353,7 @@
 
         <!-- Danh sách thành viên và đếm ngược -->
         <div class="list-container">
-            <div class="box">
+            <div class="box fade-in">
                 <h2>Danh sách thành viên</h2>
                 <ul class="member-list">
                     <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
@@ -369,21 +364,11 @@
                 </ul>
             </div>
 
-            <div class="box">
+            <div class="box fade-in">
                 <h2>Đếm ngược</h2>
                 <p>Chúng ta còn <span id="countdown"></span> cho đến ngày hoàn thành bài tập!</p>
             </div>
         </div>
-    </div>
-
-    <!-- Phần footer với video nền -->
-    <div class="footer-background">
-        <div class="footer-content">
-            <p>© 2025 Nhóm I. All rights reserved.</p>
-        </div>
-        <video class="footer-video" autoplay muted loop>
-            <source src="path/to/footer-video.mp4" type="video/mp4">
-        </video>
     </div>
 
     <script>
@@ -400,6 +385,14 @@
             } else {
                 navbar.classList.remove("shrink");
             }
+
+            // Hiệu ứng Fade-in khi cuộn
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(function(el) {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    el.classList.add('visible');
+                }
+            });
         }
 
         // Đếm ngược
