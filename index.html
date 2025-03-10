@@ -184,6 +184,14 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
+        /* Nền cho phần cuối trang */
+        .footer-background {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+        }
+
         /* Hiệu ứng Loading */
         #loading {
             position: fixed;
@@ -269,7 +277,7 @@
             </div>
         </div>
 
-        <!-- Danh sách nhóm và đếm ngược -->
+        <!-- Danh sách thành viên và đếm ngược -->
         <div class="list-container">
             <div class="box">
                 <h2>Danh sách thành viên</h2>
@@ -289,6 +297,11 @@
         </div>
     </div>
 
+    <!-- Phần nền cuối -->
+    <div class="footer-background">
+        <p>&copy; 2025 Nhóm Icho 2025. Tất cả quyền được bảo vệ.</p>
+    </div>
+
     <script>
         // Đếm ngược thời gian
         function updateCountdown() {
@@ -304,6 +317,13 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
+        // Hiệu ứng ẩn màn hình loading
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("loading").classList.add("hidden");
+            }, 1000);
+        };
+
         // Chạy slideshow ảnh
         let currentImageIndex = 0;
         const images = document.querySelectorAll('.album img');
@@ -312,13 +332,6 @@
             const albumImages = document.getElementById('albumImages');
             albumImages.style.transform = `translateX(-${currentImageIndex * 100}%)`;
         }, 3000); // 3 giây chuyển ảnh
-
-        // Hiệu ứng ẩn màn hình loading
-        window.onload = function() {
-            setTimeout(function() {
-                document.getElementById("loading").classList.add("hidden");
-            }, 1000);
-        };
     </script>
 </body>
 </html>
