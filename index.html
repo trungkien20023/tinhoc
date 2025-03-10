@@ -10,7 +10,6 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background-color: #f0f0f0;
         }
 
         /* Phần đầu trang với video nền */
@@ -31,6 +30,24 @@
             z-index: -1;
         }
 
+        /* Lớp overlay chứa phần "Chào mừng" */
+        .welcome-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Nền tối để nổi bật chữ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 50px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Phần thanh điều hướng */
         .navbar {
             position: fixed;
             top: 0;
@@ -70,15 +87,12 @@
             color: #96b0e7;
         }
 
-        /* Phần nội dung */
+        /* Phần nội dung chia thành ba phần */
         .content {
             position: relative;
             padding: 40px 20px;
             text-align: center;
-            color: white;
-            background: rgba(255, 255, 255, 0.8);
-            z-index: 1;
-            margin-top: 20px; /* Đẩy phần nội dung xuống dưới phần video */
+            background: #f0f0f0;
         }
 
         .content h1 {
@@ -92,16 +106,20 @@
             margin-bottom: 40px;
         }
 
-        .section {
-            margin-top: 100px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s, transform 1s;
+        /* Chia thành ba phần dưới */
+        .content .section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
         }
 
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
+        .section div {
+            width: 32%;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         /* Hiệu ứng Loading */
@@ -131,11 +149,16 @@
     <!-- Màn hình loading -->
     <div id="loading">Đang tải...</div>
 
-    <!-- Phần đầu trang với video nền -->
+    <!-- Phần đầu trang với video nền và lớp overlay -->
     <div class="header">
         <video class="video-background" autoplay muted loop>
             <source src="111508-691222995.mp4" type="video/mp4">
         </video>
+        
+        <!-- Lớp overlay chứa phần "Chào mừng" -->
+        <div class="welcome-overlay">
+            <div>Chào mừng đến với Nhóm Icho 2025</div>
+        </div>
 
         <!-- Thanh điều hướng -->
         <div class="navbar" id="navbar">
@@ -147,11 +170,27 @@
         </div>
     </div>
 
-    <!-- Phần nội dung -->
+    <!-- Phần nội dung dưới video -->
     <div class="content" id="main-content">
-        <h1>Chào mừng đến với Nhóm Icho 2025</h1>
+        <h1>Giới thiệu Nhóm</h1>
         <p>Trang web được tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
         
+        <!-- Chia thành ba phần dưới -->
+        <div class="section">
+            <div>
+                <h2>Phần 1</h2>
+                <p>Thông tin phần 1</p>
+            </div>
+            <div>
+                <h2>Phần 2</h2>
+                <p>Thông tin phần 2</p>
+            </div>
+            <div>
+                <h2>Phần 3</h2>
+                <p>Thông tin phần 3</p>
+            </div>
+        </div>
+
         <!-- Danh sách thành viên -->
         <section id="members" class="section">
             <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
@@ -208,15 +247,6 @@
             var memberList = document.getElementById("member-list");
             memberList.style.display = (memberList.style.display === "none" || memberList.style.display === "") ? "block" : "none";
         }
-
-        // Hiệu ứng xuất hiện cho các phần nội dung khi cuộn
-        document.addEventListener("scroll", function() {
-            document.querySelectorAll(".section").forEach(section => {
-                if (section.getBoundingClientRect().top < window.innerHeight) {
-                    section.classList.add("visible");
-                }
-            });
-        });
     </script>
 </body>
 </html>
