@@ -32,13 +32,13 @@
     <div id="imageContainer"></div>
     
     <script>
-        const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67cf0ce68960c979a56f0976"; // Thay bằng URL của JSONBin.io
-        const JSONBIN_API_KEY = "$2a$10$I5AKBLbUsefBjkcOGjVzjeRvyNqDJH/mePpSgYIjvPhbfONDDZpry"; // API Key từ JSONBin.io
+        const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67cf0ce68960c979a56f0976/latest";
+        const JSONBIN_API_KEY = "$2a$10$I5AKBLbUsefBjkcOGjVzjeRvyNqDJH/mePpSgYIjvPhbfONDDZpry";
 
         function loadImages() {
             fetch(JSONBIN_URL, {
                 method: "GET",
-                headers: { "X-Master-Key": JSONBIN_API_KEY }
+                headers: { "X-Master-Key": JSONBIN_API_KEY, "X-Bin-Private": "false" }
             })
             .then(response => response.json())
             .then(data => {
@@ -51,6 +51,7 @@
                     img.className = "image-box";
                     container.appendChild(img);
                 });
+                localStorage.setItem("images", JSON.stringify(images)); // Lưu vào localStorage
             })
             .catch(error => console.error("Error loading images:", error));
         }
@@ -70,16 +71,28 @@
             .then(data => {
                 if (data.success) {
                     const imgUrl = data.data.url;
+                    
                     fetch(JSONBIN_URL, {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "X-Master-Key": JSONBIN_API_KEY
-                        },
-                        body: JSON.stringify({ record: [...images, imgUrl] })
+                        method: "GET",
+                        headers: { "X-Master-Key": JSONBIN_API_KEY }
                     })
-                    .then(() => loadImages())
-                    .catch(error => console.error("Error saving image:", error));
+                    .then(response => response.json())
+                    .then(jsonData => {
+                        const images = jsonData.record || [];
+                        images.push(imgUrl);
+                        
+                        fetch(JSONBIN_URL, {
+                            method: "PUT",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-Master-Key": JSONBIN_API_KEY
+                            },
+                            body: JSON.stringify({ record: images })
+                        })
+                        .then(() => loadImages())
+                        .catch(error => console.error("Error saving image:", error));
+                    })
+                    .catch(error => console.error("Error fetching images:", error));
                 } else {
                     console.error("Upload failed", data);
                 }
