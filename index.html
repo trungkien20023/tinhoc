@@ -166,6 +166,21 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
+        .section-background:nth-child(1) {
+            background: url('image1.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .section-background:nth-child(2) {
+            background: url('image2.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .section-background:nth-child(3) {
+            background: url('image3.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
         /* Nền cho phần cuối trang */
         .footer-background {
             position: relative;
@@ -256,17 +271,62 @@
                 width: 100%;
                 height: auto;
             }
+
+            /* Điều chỉnh cho các phần danh sách thành viên và đếm ngược */
+            .list-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
         }
 
-        /* Media Query cho các màn hình máy tính bảng */
-        @media (max-width: 1024px) {
-            .section {
-                flex-direction: column;
-            }
+        /* Phần chứa danh sách thành viên và đếm ngược */
+        .list-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 50px;
+            padding: 20px;
+        }
 
-            .section div {
-                width: 100%;
-            }
+        .box {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .member-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .member-list li {
+            margin-bottom: 10px;
+        }
+
+        .member-list a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .member-list a:hover {
+            color: #96b0e7;
+        }
+
+        /* Đếm ngược */
+        #countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e74c3c;
         }
     </style>
 </head>
@@ -300,41 +360,10 @@
         <h1>Giới thiệu Nhóm</h1>
         <p>Trang web được tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
 
-        <!-- Chia thành ba phần dưới (Văn bản, Video, Album ảnh) -->
-        <div class="section-background">
-            <div class="section">
-                <!-- Phần 1: Văn bản -->
-                <div>
-                    <h2>Phần 1: Văn bản</h2>
-                    <p>Đây là phần văn bản bạn có thể điền thông tin vào, ví dụ như giới thiệu, thông tin về nhóm hoặc nội dung bất kỳ mà bạn muốn chia sẻ.</p>
-                </div>
-
-                <!-- Phần 2: Video -->
-                <div>
-                    <h2>Phần 2: Video</h2>
-                    <video class="responsive-video" controls style="width: 100%; height: auto;">
-                        <source src="Đừng Nghĩ Nữa - Làm Tới Đi _ Video Truyền Động Lực _ Phạm Ngọc Anh - Mr Why.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-
-                <!-- Phần 3: Album ảnh -->
-                <div>
-                    <h2>Phần 3: Album ảnh</h2>
-                    <div class="album">
-                        <div class="album-images" id="albumImages">
-                            <img src="image1.jpg" alt="Image 1">
-                            <img src="image2.jpg" alt="Image 2">
-                            <img src="image3.jpg" alt="Image 3">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Danh sách thành viên và đếm ngược -->
+        <!-- Danh sách thành viên và đếm ngược kỳ thi -->
         <div class="list-container">
-            <div class="box">
+            <!-- Phần 1: Danh sách thành viên -->
+            <div class="box section-background">
                 <h2>Danh sách thành viên</h2>
                 <ul class="member-list">
                     <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
@@ -345,7 +374,8 @@
                 </ul>
             </div>
 
-            <div class="box">
+            <!-- Phần 2: Đếm ngược kỳ thi -->
+            <div class="box section-background">
                 <h2>Đếm ngược kỳ thi THPTQG</h2>
                 <div id="countdown"></div>
             </div>
