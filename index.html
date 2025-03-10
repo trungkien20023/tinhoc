@@ -13,25 +13,30 @@
             background-color: #f0f0f0;
         }
 
-        /* Video nền */
+        /* Phần đầu trang với video nền */
+        .header {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+            overflow: hidden;
+        }
+
         .video-background {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             object-fit: cover;
             z-index: -1;
-            transition: opacity 1s ease-in-out;
         }
 
-        /* Thanh điều hướng */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.5); /* Nền trong suốt */
+            background: rgba(255, 255, 255, 0.5);
             padding: 15px 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -42,7 +47,7 @@
         }
 
         .navbar.shrink {
-            background: rgba(0, 0, 0, 0.8); /* Nền đậm khi cuộn */
+            background: rgba(0, 0, 0, 0.8);
             padding: 5px 0;
         }
 
@@ -65,23 +70,24 @@
             color: #96b0e7;
         }
 
-        /* Nội dung trang */
-        .container {
+        /* Phần nội dung */
+        .content {
             position: relative;
-            z-index: 1;
-            padding: 100px 20px;
+            padding: 40px 20px;
             text-align: center;
             color: white;
-            min-height: 100vh;
+            background: rgba(255, 255, 255, 0.8);
+            margin-top: -60px; /* Đẩy phần nội dung xuống dưới */
+            z-index: 1;
         }
 
-        .container h1 {
+        .content h1 {
             font-size: 50px;
             font-weight: bold;
             margin-bottom: 20px;
         }
 
-        .container p {
+        .content p {
             font-size: 20px;
             margin-bottom: 40px;
         }
@@ -125,22 +131,24 @@
     <!-- Màn hình loading -->
     <div id="loading">Đang tải...</div>
 
-    <!-- Video nền -->
-    <video class="video-background" autoplay muted loop>
-        <source src="111508-691222995.mp4" type="video/mp4">
-    </video>
+    <!-- Phần đầu trang với video nền -->
+    <div class="header">
+        <video class="video-background" autoplay muted loop>
+            <source src="111508-691222995.mp4" type="video/mp4">
+        </video>
 
-    <!-- Thanh điều hướng -->
-    <div class="navbar" id="navbar">
-        <div class="logo">Nhóm Icho 2025</div>
-        <div>
-            <a href="index.html">Trang chủ</a>
-            <a href="Giải bài tập.html">Giải bài tập</a>
+        <!-- Thanh điều hướng -->
+        <div class="navbar" id="navbar">
+            <div class="logo">Nhóm Icho 2025</div>
+            <div>
+                <a href="index.html">Trang chủ</a>
+                <a href="Giải bài tập.html">Giải bài tập</a>
+            </div>
         </div>
     </div>
 
-    <!-- Nội dung trang -->
-    <div class="container" id="main-content">
+    <!-- Phần nội dung -->
+    <div class="content" id="main-content">
         <h1>Chào mừng đến với Nhóm Icho 2025</h1>
         <p>Trang web được tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
         
