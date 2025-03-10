@@ -32,6 +32,29 @@
     <div id="imageContainer"></div>
     
     <script>
+        const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67cf0ce68960c979a56f0976"; // Thay bằng URL của JSONBin.io
+        const JSONBIN_API_KEY = "$2a$10$I5AKBLbUsefBjkcOGjVzjeRvyNqDJH/mePpSgYIjvPhbfONDDZpry"; // API Key từ JSONBin.io
+
+        function loadImages() {
+            fetch(JSONBIN_URL, {
+                method: "GET",
+                headers: { "X-Master-Key": JSONBIN_API_KEY }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const images = data.record || [];
+                const container = document.getElementById("imageContainer");
+                container.innerHTML = "";
+                images.forEach(imgUrl => {
+                    const img = document.createElement("img");
+                    img.src = imgUrl;
+                    img.className = "image-box";
+                    container.appendChild(img);
+                });
+            })
+            .catch(error => console.error("Error loading images:", error));
+        }
+        
         document.getElementById('imageInput').addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -46,16 +69,25 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    const img = document.createElement('img');
-                    img.src = data.data.url;
-                    img.className = 'image-box';
-                    document.getElementById('imageContainer').appendChild(img);
+                    const imgUrl = data.data.url;
+                    fetch(JSONBIN_URL, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-Master-Key": JSONBIN_API_KEY
+                        },
+                        body: JSON.stringify({ record: [...images, imgUrl] })
+                    })
+                    .then(() => loadImages())
+                    .catch(error => console.error("Error saving image:", error));
                 } else {
                     console.error("Upload failed", data);
                 }
             })
             .catch(error => console.error("Error uploading image:", error));
         });
+        
+        window.onload = loadImages;
     </script>
 </body>
 </html>
