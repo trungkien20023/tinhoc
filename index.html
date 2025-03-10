@@ -69,6 +69,11 @@
             opacity: 0;
             transform: translateY(50px);
         }
+        .visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: opacity 1s ease, transform 1s ease;
+        }
         /* Countdown */
         .countdown {
             font-size: 24px;
@@ -129,7 +134,6 @@
         <p>© 2025 Website của chúng tôi</p>
     </footer>
     <script>
-        // Countdown Timer
         function updateCountdown() {
             const examDate = new Date("June 26, 2025 00:00:00").getTime();
             const now = new Date().getTime();
@@ -143,19 +147,14 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
         
-        // Navbar hide/show on scroll
-        let lastScrollTop = 0;
-        window.addEventListener("scroll", function() {
-            let navbar = document.getElementById("navbar");
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop) {
-                navbar.classList.add("hidden");
-            } else {
-                navbar.classList.remove("hidden");
-            }
-            lastScrollTop = scrollTop;
+        document.addEventListener("scroll", function() {
+            document.querySelectorAll(".section").forEach(section => {
+                if (section.getBoundingClientRect().top < window.innerHeight * 0.9) {
+                    section.classList.add("visible");
+                }
+            });
         });
-        // Toggle Member List
+        
         function toggleMembers() {
             let memberList = document.getElementById("member-list");
             if (memberList.style.display === "none" || memberList.style.display === "") {
