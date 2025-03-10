@@ -350,13 +350,20 @@
     </div>
 
     <!-- Phần nền cuối -->
-    <div class="964df1d1e8c1bc21f634c7e268a2748e.mp4">
+    <div class="footer-background">
+    <video class="footer-video" autoplay muted loop>
+        <source src="964df1d1e8c1bc21f634c7e268a2748e.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <div class="footer-content">
         <p>&copy; 2025 Nhóm I. Tất cả quyền được bảo vệ.</p>
     </div>
+</div>
 
     <script>
         // Đếm ngược thời gian
-        var countdownDate = new Date("June 1, 2025 00:00:00").getTime();
+        var countdownDate = new Date("June 25, 2025 00:00:00").getTime();
         var countdownFunction = setInterval(function() {
             var now = new Date().getTime();
             var distance = countdownDate - now;
