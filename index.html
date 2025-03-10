@@ -13,7 +13,7 @@
             overflow-x: hidden;
         }
 
-        /* Hiệu ứng Loading Page */
+        /* Màn hình Loading */
         #loading {
             position: fixed;
             width: 100%;
@@ -64,7 +64,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(174, 207, 218, 0.9);
+            background: rgba(255, 255, 255, 0.5); /* Trong suốt */
             padding: 15px 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -75,7 +75,7 @@
 
         .navbar.shrink {
             padding: 5px 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.8); /* Đổi nền khi cuộn */
         }
 
         .navbar a {
@@ -136,7 +136,7 @@
 <body>
     <div id="loading">Đang tải...</div> <!-- Màn hình loading -->
 
-    <video class="video-background" id="111508-691222995.mp4" autoplay muted loop>
+    <video class="video-background" id="background-video" autoplay muted loop>
         <source src="111508-691222995.mp4" type="video/mp4">
     </video>
 
@@ -214,7 +214,7 @@
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById("loading").classList.add("hidden");
-            }, 1000);  // Đảm bảo loading ẩn sau 1 giây
+            }, 1000); // Thời gian tải trang
         };
     </script>
 </body>
