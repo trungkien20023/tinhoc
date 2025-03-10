@@ -93,7 +93,9 @@
             position: relative;
             padding: 40px 20px;
             text-align: center;
-            background: #f0f0f0;
+            background: url('your-background-image.jpg') no-repeat center center; /* Thêm hình nền */
+            background-size: cover; /* Đảm bảo hình nền sẽ phủ toàn bộ phần nội dung */
+            color: white; /* Điều chỉnh màu chữ để dễ đọc trên nền */
         }
 
         .content h1 {
@@ -315,7 +317,7 @@
             <!-- Phần 2: Chèn video -->
             <div class="section-background">
                 <h2>Video Giới thiệu</h2>
-                <video width="300" controls>
+                <video width="100%" height="auto" controls>
                     <source src="your-video-url.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -335,9 +337,9 @@
         </div>
 
         <!-- Danh sách thành viên và đếm ngược kỳ thi -->
-        <div class="list-container">
+        <div class="list-container" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
             <!-- Phần 1: Danh sách thành viên -->
-            <div class="box section-background">
+            <div class="box section-background" style="flex: 0 0 35%; margin-right: 20px;">
                 <h2>Danh sách thành viên</h2>
                 <ul class="member-list">
                     <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
@@ -349,7 +351,7 @@
             </div>
 
             <!-- Phần 2: Đếm ngược kỳ thi -->
-            <div class="box section-background">
+            <div class="box section-background" style="flex: 0 0 35%;">
                 <h2>Đếm ngược kỳ thi THPTQG</h2>
                 <div id="countdown"></div>
             </div>
@@ -392,21 +394,17 @@
 
         // Ẩn loading sau khi trang tải xong
         window.onload = function () {
-            setTimeout(function () {
-                document.getElementById("loading").classList.add("hidden");
-            }, 2000);
+            document.getElementById("loading").classList.add("hidden");
         };
 
-        // Chuyển ảnh tự động trong album
-        let albumImages = document.getElementById("albumImages");
-        let currentIndex = 0;
-        let images = albumImages.getElementsByTagName("img");
-        let totalImages = images.length;
-
+        // Chuyển ảnh trong album
+        var currentIndex = 0;
+        var images = document.querySelectorAll(".album img");
         setInterval(function () {
-            currentIndex = (currentIndex + 1) % totalImages;
-            albumImages.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }, 3000);
+            images[currentIndex].style.display = "none";
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].style.display = "block";
+        }, 2000);
     </script>
 </body>
 
