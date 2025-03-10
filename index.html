@@ -15,8 +15,8 @@
         body {
             font-family: 'Dancing Script', cursive;
             color: #fff;
-            overflow-x: hidden;
             background: #000;
+            overflow-x: hidden;
         }
         /* Video Background */
         .video-background {
@@ -37,34 +37,9 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: -1;
         }
-        /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px 0;
-            display: flex;
-            justify-content: center;
-            z-index: 999;
-            transition: transform 0.3s ease;
-        }
-        .navbar.hidden {
-            transform: translateY(-100%);
-        }
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 20px;
-            transition: color 0.3s ease;
-        }
-        .navbar a:hover {
-            color: #3498db;
-        }
         /* Sections */
         .section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             text-align: center;
             opacity: 0;
             transform: translateY(50px);
@@ -78,7 +53,6 @@
         .countdown {
             font-size: 24px;
             font-weight: bold;
-            text-align: center;
         }
         /* Member List */
         .member-list {
@@ -93,9 +67,6 @@
         }
         /* Footer */
         footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
             background: rgba(0, 0, 0, 0.7);
             text-align: center;
             padding: 10px;
@@ -108,18 +79,17 @@
         <source src="111508-691222995.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
-    <nav class="navbar" id="navbar">
-        <a href="index.html">Trang chủ</a>
-        <a href="Giải bài tập.html">Giải bài tập</a>
-    </nav>
+    
     <section class="section visible" id="intro">
         <h1>Chào mừng đến với website của chúng tôi!</h1>
         <p>Trang web này tạo ra nhằm mục đích hoàn thành các bài tập và rèn luyện kỹ năng lập trình.</p>
     </section>
+    
     <section class="section visible" id="countdown-section">
         <h2>Đếm ngược đến kỳ thi THPTQG</h2>
         <div id="countdown" class="countdown"></div>
     </section>
+    
     <section class="section visible" id="members">
         <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
         <ul class="member-list" id="member-list">
@@ -130,9 +100,16 @@
             <li><a href="HongThi.html">Nguyễn Thị Hồng Thi</a></li>
         </ul>
     </section>
+    
+    <section class="section visible" id="video-section">
+        <h2>Video giải trí</h2>
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+    </section>
+    
     <footer>
         <p>© 2025 Website của chúng tôi</p>
     </footer>
+    
     <script>
         function updateCountdown() {
             const examDate = new Date("June 26, 2025 00:00:00").getTime();
