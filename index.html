@@ -21,12 +21,12 @@
         }
 
         .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
             z-index: -1;
         }
 
@@ -213,6 +213,58 @@
             pointer-events: none;
             transition: opacity 0.8s ease-out;
         }
+
+        /* Media Query cho màn hình điện thoại di động */
+        @media (max-width: 768px) {
+            .header {
+                height: 60vh;
+            }
+            .welcome-overlay {
+                font-size: 30px;
+            }
+            .navbar {
+                padding: 10px 0;
+            }
+            .navbar .logo {
+                font-size: 20px;
+            }
+            .navbar a {
+                font-size: 14px;
+                margin: 0 10px;
+            }
+            .content {
+                padding: 20px;
+            }
+            .section {
+                flex-direction: column;
+            }
+            .section div {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .album {
+                width: 100%;
+                flex-direction: column;
+                overflow: hidden;
+            }
+            .album-images {
+                display: block;
+            }
+            .album img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Media Query cho các màn hình máy tính bảng */
+        @media (max-width: 1024px) {
+            .section {
+                flex-direction: column;
+            }
+            .section div {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -304,34 +356,28 @@
 
     <script>
         // Đếm ngược thời gian
-        function updateCountdown() {
-            const examDate = new Date("June 26, 2025 00:00:00").getTime();
-            const now = new Date().getTime();
-            const distance = examDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("countdown").innerHTML = `Còn ${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
-        }
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // Hiệu ứng ẩn màn hình loading
+        var countdownDate = new Date("June 1, 2025 00:00:00").getTime();
+        var countdownFunction = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countdownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+        
+        // Hiệu ứng "loading"
         window.onload = function() {
             setTimeout(function() {
-                document.getElementById("loading").classList.add("hidden");
-            }, 1000);
+                document.getElementById('loading').classList.add('hidden');
+            }, 2000);
         };
-
-        // Chạy slideshow ảnh
-        let currentImageIndex = 0;
-        const images = document.querySelectorAll('.album img');
-        setInterval(() => {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            const albumImages = document.getElementById('albumImages');
-            albumImages.style.transform = `translateX(-${currentImageIndex * 100}%)`;
-        }, 3000); // 3 giây chuyển ảnh
     </script>
 </body>
 </html>
