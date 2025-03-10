@@ -32,13 +32,13 @@
     <div id="imageContainer"></div>
     
     <script>
-        const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67cf0ce68960c979a56f0976/latest";
+        const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67cf0ce68960c979a56f0976";
         const JSONBIN_API_KEY = "$2a$10$I5AKBLbUsefBjkcOGjVzjeRvyNqDJH/mePpSgYIjvPhbfONDDZpry";
 
         function loadImages() {
-            fetch(JSONBIN_URL, {
+            fetch(`${JSONBIN_URL}/latest`, {
                 method: "GET",
-                headers: { "X-Master-Key": JSONBIN_API_KEY, "X-Bin-Private": "false" }
+                headers: { "X-Master-Key": JSONBIN_API_KEY }
             })
             .then(response => response.json())
             .then(data => {
@@ -51,7 +51,6 @@
                     img.className = "image-box";
                     container.appendChild(img);
                 });
-                localStorage.setItem("images", JSON.stringify(images)); // Lưu vào localStorage
             })
             .catch(error => console.error("Error loading images:", error));
         }
@@ -72,7 +71,7 @@
                 if (data.success) {
                     const imgUrl = data.data.url;
                     
-                    fetch(JSONBIN_URL, {
+                    fetch(`${JSONBIN_URL}/latest`, {
                         method: "GET",
                         headers: { "X-Master-Key": JSONBIN_API_KEY }
                     })
