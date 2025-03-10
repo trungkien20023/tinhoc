@@ -33,7 +33,7 @@
     
     <script>
         const JSONBIN_URL = "https://api.jsonbin.io/v3/b/67cf0ce68960c979a56f0976";
-        const JSONBIN_API_KEY = "$2a$10$I5AKBLbUsefBjkcOGjVzjeRvyNqDJH/mePpSgYIjvPhbfONDDZpry";
+        const JSONBIN_API_KEY = "$2a$10$GiAT0C3Yp4ELS.pAg8E5c.bgSQi2Td14RG5tZCSNEsz.eVqSfaWBy";
 
         function loadImages() {
             fetch(`${JSONBIN_URL}/latest`, {
@@ -42,7 +42,12 @@
             })
             .then(response => response.json())
             .then(data => {
-                const images = data.record || [];
+                if (!data || !data.record || !Array.isArray(data.record.images)) {
+                    console.error("Invalid data format", data);
+                    return;
+                }
+                
+                const images = data.record.images;
                 const container = document.getElementById("imageContainer");
                 container.innerHTML = "";
                 images.forEach(imgUrl => {
@@ -77,7 +82,7 @@
                     })
                     .then(response => response.json())
                     .then(jsonData => {
-                        const images = jsonData.record || [];
+                        let images = jsonData.record.images || [];
                         images.push(imgUrl);
                         
                         fetch(JSONBIN_URL, {
@@ -86,7 +91,7 @@
                                 "Content-Type": "application/json",
                                 "X-Master-Key": JSONBIN_API_KEY
                             },
-                            body: JSON.stringify({ record: images })
+                            body: JSON.stringify({ images })
                         })
                         .then(() => loadImages())
                         .catch(error => console.error("Error saving image:", error));
