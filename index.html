@@ -382,22 +382,12 @@
             }
         }, 1000);
 
-        // Hiệu ứng "shrink" cho navbar khi cuộn trang
-        window.onscroll = function () {
-            var navbar = document.getElementById("navbar");
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                navbar.classList.add("shrink");
-            } else {
-                navbar.classList.remove("shrink");
-            }
-        };
+        // Hiệu ứng loading
+        window.addEventListener('load', function () {
+            document.getElementById('loading').classList.add('hidden');
+        });
 
-        // Ẩn loading sau khi trang tải xong
-        window.onload = function () {
-            document.getElementById("loading").classList.add("hidden");
-        };
-
-        // Chuyển ảnh trong album
+        // Chuyển hình ảnh album tự động
         var currentIndex = 0;
         var images = document.querySelectorAll(".album img");
         setInterval(function () {
@@ -406,6 +396,7 @@
             images[currentIndex].style.display = "block";
         }, 2000);
     </script>
+
 </body>
 
 </html>
