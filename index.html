@@ -7,14 +7,98 @@
     <style>
         body {
             font-family: 'Dancing Script', cursive;
-            text-align: center;
-            padding: 0;
             margin: 0;
+            padding: 0;
             overflow-x: hidden;
-            height: 100%;
+            background-color: #f0f0f0;
         }
 
-        /* Màn hình Loading */
+        /* Video nền */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Thanh điều hướng */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.5); /* Nền trong suốt */
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+
+        .navbar.shrink {
+            background: rgba(0, 0, 0, 0.8); /* Nền đậm khi cuộn */
+            padding: 5px 0;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-left: 30px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #96b0e7;
+        }
+
+        /* Nội dung trang */
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container h1 {
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-top: 100px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hiệu ứng Loading */
         #loading {
             position: fixed;
             width: 100%;
@@ -35,133 +119,35 @@
             pointer-events: none;
             transition: opacity 0.8s ease-out;
         }
-
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -1;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1;
-            margin-top: 50px;
-            opacity: 0; /* Ẩn nội dung khi trang tải */
-            transition: opacity 1s ease-in-out; /* Thêm hiệu ứng khi hiển thị nội dung */
-        }
-
-        .container.visible {
-            opacity: 1; /* Hiển thị nội dung khi tải xong */
-        }
-
-        /* Thanh điều hướng */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.5); /* Trong suốt */
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: center;
-            z-index: 1000;
-            transition: all 0.5s ease;
-        }
-
-        .navbar.shrink {
-            padding: 5px 0;
-            background: rgba(0, 0, 0, 0.8); /* Đổi nền khi cuộn */
-        }
-
-        .navbar a {
-            text-decoration: none;
-            color: #333;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .navbar a:hover {
-            color: #96b0e7;
-        }
-
-        h1, h2, p {
-            margin-bottom: 15px;
-        }
-
-        /* Hiệu ứng ẩn hiện khi cuộn */
-        .section {
-            margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s, transform 1s;
-        }
-
-        .visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Căn giữa danh sách thành viên */
-        .member-list {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-            font-size: 20px;
-            display: none;
-        }
-
-        .member-list li {
-            margin: 10px 0;
-        }
-
-        .toggle-button {
-            cursor: pointer;
-            color: #000000;
-            font-weight: bold;
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
-    <div id="loading">Đang tải...</div> <!-- Màn hình loading -->
+    <!-- Màn hình loading -->
+    <div id="loading">Đang tải...</div>
 
-    <video class="video-background" id="background-video" autoplay muted loop>
+    <!-- Video nền -->
+    <video class="video-background" autoplay muted loop>
         <source src="111508-691222995.mp4" type="video/mp4">
     </video>
 
+    <!-- Thanh điều hướng -->
     <div class="navbar" id="navbar">
-        <a href="index.html">Trang chủ</a>
-        <a href="Giải bài tập.html">Giải bài tập</a>
+        <div class="logo">Nhóm Icho 2025</div>
+        <div>
+            <a href="index.html">Trang chủ</a>
+            <a href="Giải bài tập.html">Giải bài tập</a>
+        </div>
     </div>
 
+    <!-- Nội dung trang -->
     <div class="container" id="main-content">
-        <h1>Giới thiệu Nhóm</h1>
-
-        <section id="intro" class="section visible">
-            <h3>Trang web được tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</h3>
-        </section>
-
+        <h1>Chào mừng đến với Nhóm Icho 2025</h1>
+        <p>Trang web được tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
+        
+        <!-- Danh sách thành viên -->
         <section id="members" class="section">
             <h2 class="toggle-button" onclick="toggleMembers()">Danh sách thành viên</h2>
-            <ul class="member-list" id="member-list">
+            <ul class="member-list" id="member-list" style="display:none;">
                 <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
                 <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
                 <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
@@ -170,6 +156,7 @@
             </ul>
         </section>
 
+        <!-- Đếm ngược -->
         <section id="countdown-section" class="section">
             <h2>Đếm ngược đến kỳ thi THPTQG</h2>
             <div id="countdown" class="countdown"></div>
@@ -177,6 +164,24 @@
     </div>
 
     <script>
+        // Hiệu ứng cuộn cho thanh điều hướng
+        window.onscroll = function() {
+            const navbar = document.getElementById("navbar");
+            if (window.scrollY > 100) {
+                navbar.classList.add("shrink");
+            } else {
+                navbar.classList.remove("shrink");
+            }
+        };
+
+        // Hiệu ứng Loading
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("loading").classList.add("hidden");
+            }, 1000);
+        };
+
+        // Đếm ngược thời gian
         function updateCountdown() {
             const examDate = new Date("June 26, 2025 00:00:00").getTime();
             const now = new Date().getTime();
@@ -190,40 +195,20 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
+        // Toggle danh sách thành viên
+        function toggleMembers() {
+            var memberList = document.getElementById("member-list");
+            memberList.style.display = (memberList.style.display === "none" || memberList.style.display === "") ? "block" : "none";
+        }
+
+        // Hiệu ứng xuất hiện cho các phần nội dung khi cuộn
         document.addEventListener("scroll", function() {
-            const navbar = document.getElementById("navbar");
-            const videoBackground = document.getElementById("background-video");
-
-            // Hiệu ứng co nhỏ thanh navbar khi cuộn
-            if (window.scrollY > 100) {
-                navbar.classList.add("shrink");
-                videoBackground.style.opacity = "0.5";
-                videoBackground.style.transform = "scale(1.05)";
-            } else {
-                navbar.classList.remove("shrink");
-                videoBackground.style.opacity = "1";
-                videoBackground.style.transform = "scale(1)";
-            }
-
-            // Hiệu ứng hiện section khi cuộn
             document.querySelectorAll(".section").forEach(section => {
                 if (section.getBoundingClientRect().top < window.innerHeight) {
                     section.classList.add("visible");
                 }
             });
         });
-
-        function toggleMembers() {
-            var memberList = document.getElementById("member-list");
-            memberList.style.display = (memberList.style.display === "none" || memberList.style.display === "") ? "block" : "none";
-        }
-
-        window.onload = function() {
-            setTimeout(function() {
-                document.getElementById("loading").classList.add("hidden");
-                document.getElementById("main-content").classList.add("visible");
-            }, 1000); // Thời gian tải trang
-        };
     </script>
 </body>
 </html>
