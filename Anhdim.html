@@ -33,19 +33,28 @@
     
     <script>
         document.getElementById('imageInput').addEventListener('change', function(event) {
-            const files = event.target.files;
-            const container = document.getElementById('imageContainer');
+            const file = event.target.files[0];
+            if (!file) return;
             
-            for (let file of files) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
+            const formData = new FormData();
+            formData.append("image", file);
+            
+            fetch("https://api.imgbb.com/1/upload?key=48e9928328d87de900bf7ea9cf6e74a3", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
                     const img = document.createElement('img');
-                    img.src = e.target.result;
+                    img.src = data.data.url;
                     img.className = 'image-box';
-                    container.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            }
+                    document.getElementById('imageContainer').appendChild(img);
+                } else {
+                    console.error("Upload failed", data);
+                }
+            })
+            .catch(error => console.error("Error uploading image:", error));
         });
     </script>
 </body>
