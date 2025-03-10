@@ -11,6 +11,7 @@
             padding: 0;
             margin: 0;
             overflow-x: hidden;
+            height: 100%;
         }
 
         /* Màn hình Loading */
@@ -46,14 +47,6 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        /* Video cuối trang */
-        .footer-video {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            margin-top: 30px;
-        }
-
         .container {
             max-width: 900px;
             margin: auto;
@@ -65,6 +58,12 @@
             position: relative;
             z-index: 1;
             margin-top: 50px;
+            opacity: 0; /* Ẩn nội dung khi trang tải */
+            transition: opacity 1s ease-in-out; /* Thêm hiệu ứng khi hiển thị nội dung */
+        }
+
+        .container.visible {
+            opacity: 1; /* Hiển thị nội dung khi tải xong */
         }
 
         /* Thanh điều hướng */
@@ -153,7 +152,7 @@
         <a href="Giải bài tập.html">Giải bài tập</a>
     </div>
 
-    <div class="container">
+    <div class="container" id="main-content">
         <h1>Giới thiệu Nhóm</h1>
 
         <section id="intro" class="section visible">
@@ -176,11 +175,6 @@
             <div id="countdown" class="countdown"></div>
         </section>
     </div>
-
-    <!-- Video cuối trang -->
-    <video class="footer-video" autoplay muted loop>
-        <source src="footer-video.mp4" type="video/mp4">
-    </video>
 
     <script>
         function updateCountdown() {
@@ -227,6 +221,7 @@
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById("loading").classList.add("hidden");
+                document.getElementById("main-content").classList.add("visible");
             }, 1000); // Thời gian tải trang
         };
     </script>
