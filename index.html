@@ -112,18 +112,31 @@
             justify-content: space-between;
             margin-top: 50px;
             flex-wrap: wrap;
+            gap: 20px; /* Thêm khoảng cách giữa các phần */
         }
 
-        /* Nền cho phần 1, 2, 3 là ảnh */
-        .section-background {
-            background-size: cover; /* Đảm bảo ảnh phủ toàn bộ phần */
-            background-position: center; /* Căn giữa ảnh */
-            background-repeat: no-repeat; /* Không lặp lại ảnh */
-            padding: 40px;
-            margin-top: 20px;
+        .section div {
+            flex: 1;
+            min-width: 300px;
+            height: 350px; /* Điều chỉnh chiều cao để đồng đều */
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            height: 300px; /* Điều chỉnh chiều cao phần */
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .section div h2 {
+            color: white;
+            font-size: 25px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Thêm bóng cho chữ */
+            margin-bottom: 20px;
+        }
+
+        .section div p {
+            color: white;
+            font-size: 18px;
         }
 
         /* Phần Danh sách nhóm và Đếm ngược */
@@ -358,7 +371,7 @@
 
             <div class="box">
                 <h2>Đếm ngược</h2>
-                <p>Chúng ta còn <span id="countdown"></span> cho đến ngày thi THPTQG</p>
+                <p>Chúng ta còn <span id="countdown"></span> cho đến ngày hoàn thành bài tập!</p>
             </div>
         </div>
     </div>
@@ -369,7 +382,7 @@
             <p>© 2025 Nhóm I. All rights reserved.</p>
         </div>
         <video class="footer-video" autoplay muted loop>
-            <source src="964df1d1e8c1bc21f634c7e268a2748e.mp4" type="video/mp4">
+            <source src="path/to/footer-video.mp4" type="video/mp4">
         </video>
     </div>
 
@@ -391,7 +404,7 @@
 
         // Đếm ngược
         const countdownElement = document.getElementById("countdown");
-        const targetDate = new Date("June 25, 2025 00:00:00").getTime();
+        const targetDate = new Date("March 31, 2025 23:59:59").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -406,7 +419,7 @@
 
             if (timeLeft < 0) {
                 clearInterval(countdownInterval);
-                countdownElement.innerHTML = "Đã đến ngày thi";
+                countdownElement.innerHTML = "Bài tập đã hoàn thành!";
             }
         }
 
