@@ -46,6 +46,14 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
+        /* Video cuối trang */
+        .footer-video {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            margin-top: 30px;
+        }
+
         .container {
             max-width: 900px;
             margin: auto;
@@ -168,6 +176,11 @@
             <div id="countdown" class="countdown"></div>
         </section>
     </div>
+
+    <!-- Video cuối trang -->
+    <video class="footer-video" autoplay muted loop>
+        <source src="footer-video.mp4" type="video/mp4">
+    </video>
 
     <script>
         function updateCountdown() {
