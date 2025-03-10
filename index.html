@@ -114,16 +114,18 @@
             margin-top: 50px;
             gap: 20px;
             flex-wrap: wrap;
+            /* Đảm bảo các phần tử không bị chồng lên nhau khi màn hình nhỏ */
         }
 
         .section div {
-            width: 32%;
+            flex: 1; /* Làm cho mỗi phần có kích thước bằng nhau */
             background: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             margin-bottom: 30px;
+            box-sizing: border-box;
         }
 
         /* Chèn album ảnh */
@@ -167,22 +169,11 @@
         /* Nền cho phần cuối trang */
         .footer-background {
             position: relative;
-            background: rgba(0, 0, 0, 0.3);
+            background: url('footer-background.jpg') no-repeat center center;
+            background-size: cover;
             padding: 60px 0;
             text-align: center;
             color: white;
-        }
-
-        /* Video footer điều chỉnh kích thước */
-        .footer-video {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: auto;
-            object-fit: cover;
-            z-index: -1;
         }
 
         .footer-content {
@@ -363,11 +354,6 @@
 
     <!-- Phần nền cuối -->
     <div class="footer-background">
-        <video class="footer-video" autoplay muted loop>
-            <source src="964df1d1e8c1bc21f634c7e268a2748e.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-
         <div class="footer-content">
             <p>&copy; 2025 Nhóm I. Tất cả quyền được bảo vệ.</p>
         </div>
@@ -406,6 +392,17 @@
                 document.getElementById("loading").classList.add("hidden");
             }, 2000);
         };
+
+        // Chuyển ảnh tự động trong album
+        let albumImages = document.getElementById("albumImages");
+        let currentIndex = 0;
+        let images = albumImages.getElementsByTagName("img");
+        let totalImages = images.length;
+
+        setInterval(function () {
+            currentIndex = (currentIndex + 1) % totalImages;
+            albumImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }, 3000);
     </script>
 </body>
 
