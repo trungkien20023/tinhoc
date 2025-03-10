@@ -350,73 +350,65 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Danh sách thành viên và đếm ngược -->
-        <div class="list-container">
-            <div class="box fade-in">
-                <h2>Danh sách thành viên</h2>
-                <ul class="member-list">
-                    <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
-                    <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
-                    <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
-                    <li><a href="XuanVinh.html">Trần Minh Xuân Vinh</a></li>
-                    <li><a href="HongThi.html">Nguyễn Thị Hồng Thi</a></li>
-                </ul>
-            </div>
+    <!-- Phần danh sách thành viên và đếm ngược -->
+    <div class="list-container">
+        <!-- Danh sách thành viên -->
+        <div class="box fade-in">
+            <h2>Danh sách thành viên</h2>
+            <ul class="member-list">
+                <li><a href="TrungKien.html">Trần Huỳnh Trung Kiên</a></li>
+                <li><a href="KhoiNguyen.html">Phạm Khôi Nguyên</a></li>
+                <li><a href="AiNhi.html">Hồ Trần Ái Nhi</a></li>
+                <li><a href="XuanVinh.html">Trần Minh Xuân Vinh</a></li>
+                <li><a href="HongThi.html">Nguyễn Thị Hồng Thi</a></li>
+            </ul>
+        </div>
 
-            <div class="box fade-in">
-                <h2>Đếm ngược</h2>
-                <p>Chúng ta còn <span id="countdown"></span> cho đến ngày hoàn thành bài tập!</p>
-            </div>
+        <!-- Đếm ngược -->
+        <div class="box fade-in">
+            <h2>Đếm ngược</h2>
+            <p>Chúng ta còn <span id="countdown"></span> cho đến ngày hoàn thành bài tập!</p>
         </div>
     </div>
 
     <script>
-        // Xử lý loading
-        window.onload = function() {
-            document.getElementById('loading').classList.add('hidden');
-        }
+        // JavaScript cho đếm ngược
+        var countdownDate = new Date("Mar 31, 2025 00:00:00").getTime();
+        var countdownFunction = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countdownDate - now;
 
-        // Scroll Navbar nhỏ dần khi người dùng cuộn
-        window.onscroll = function() {
-            const navbar = document.getElementById("navbar");
-            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                navbar.classList.add("shrink");
-            } else {
-                navbar.classList.remove("shrink");
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + " ngày " + hours + " giờ "
+                + minutes + " phút " + seconds + " giây ";
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "Hết thời gian!";
             }
+        }, 1000);
 
-            // Hiệu ứng Fade-in khi cuộn
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(function(el) {
-                if (el.getBoundingClientRect().top < window.innerHeight) {
-                    el.classList.add('visible');
+        // JavaScript để hiển thị các phần dần dần khi cuộn
+        window.addEventListener("scroll", function() {
+            var elements = document.querySelectorAll(".fade-in");
+            elements.forEach(function(element) {
+                var rect = element.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    element.classList.add("visible");
                 }
             });
+        });
+
+        // Đảm bảo phần loading biến mất sau khi trang tải xong
+        window.onload = function() {
+            document.getElementById("loading").classList.add("hidden");
         }
-
-        // Đếm ngược
-        const countdownElement = document.getElementById("countdown");
-        const targetDate = new Date("March 31, 2025 23:59:59").getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const timeLeft = targetDate - now;
-
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            countdownElement.textContent = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-
-            if (timeLeft < 0) {
-                clearInterval(countdownInterval);
-                countdownElement.textContent = "Đã đến thời gian!";
-            }
-        }
-
-        const countdownInterval = setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
