@@ -166,6 +166,15 @@
             transform: scale(1.1);
         }
 
+        /* Nền cho phần 1, 2, 3 */
+        .section-background {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
         /* Hiệu ứng Loading */
         #loading {
             position: fixed;
@@ -219,6 +228,36 @@
         <h1>Giới thiệu Nhóm</h1>
         <p>Trang web được tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
 
+        <!-- Chia thành ba phần dưới -->
+        <div class="section-background">
+            <div class="section">
+                <!-- Phần 1: Văn bản -->
+                <div>
+                    <h2>Phần 1: Văn bản</h2>
+                    <p>Đây là phần văn bản bạn có thể điền thông tin vào, ví dụ như giới thiệu, thông tin về nhóm hoặc nội dung bất kỳ mà bạn muốn chia sẻ.</p>
+                </div>
+
+                <!-- Phần 2: Video -->
+                <div>
+                    <h2>Phần 2: Video</h2>
+                    <video width="300" height="200" controls>
+                        <source src="your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <!-- Phần 3: Album ảnh -->
+                <div>
+                    <h2>Phần 3: Album ảnh</h2>
+                    <div class="album">
+                        <img src="image1.jpg" alt="Image 1">
+                        <img src="image2.jpg" alt="Image 2">
+                        <img src="image3.jpg" alt="Image 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Danh sách nhóm và đếm ngược -->
         <div class="list-container">
             <div class="box">
@@ -235,34 +274,6 @@
             <div class="box">
                 <h2>Đếm ngược đến kỳ thi THPTQG</h2>
                 <div id="countdown"></div>
-            </div>
-        </div>
-
-        <!-- Chia thành ba phần dưới -->
-        <div class="section">
-            <!-- Phần 1: Văn bản -->
-            <div>
-                <h2>Phần 1: Văn bản</h2>
-                <p>Đây là phần văn bản bạn có thể điền thông tin vào, ví dụ như giới thiệu, thông tin về nhóm hoặc nội dung bất kỳ mà bạn muốn chia sẻ.</p>
-            </div>
-
-            <!-- Phần 2: Video -->
-            <div>
-                <h2>Phần 2: Video</h2>
-                <video width="300" height="200" controls>
-                    <source src="your-video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-
-            <!-- Phần 3: Album ảnh -->
-            <div>
-                <h2>Phần 3: Album ảnh</h2>
-                <div class="album">
-                    <img src="image1.jpg" alt="Image 1">
-                    <img src="image2.jpg" alt="Image 2">
-                    <img src="image3.jpg" alt="Image 3">
-                </div>
             </div>
         </div>
     </div>
