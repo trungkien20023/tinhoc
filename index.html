@@ -271,62 +271,6 @@
                 width: 100%;
                 height: auto;
             }
-
-            /* Điều chỉnh cho các phần danh sách thành viên và đếm ngược */
-            .list-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .box {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-        }
-
-        /* Phần chứa danh sách thành viên và đếm ngược */
-        .list-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            margin-top: 50px;
-            padding: 20px;
-        }
-
-        .box {
-            flex: 1;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .member-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .member-list li {
-            margin-bottom: 10px;
-        }
-
-        .member-list a {
-            text-decoration: none;
-            color: #3498db;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .member-list a:hover {
-            color: #96b0e7;
-        }
-
-        /* Đếm ngược */
-        #countdown {
-            font-size: 24px;
-            font-weight: bold;
-            color: #e74c3c;
         }
     </style>
 </head>
@@ -359,6 +303,36 @@
     <div class="content" id="main-content">
         <h1>Giới thiệu Nhóm</h1>
         <p>Trang web được tạo ra nhằm mục đích hoàn thành các bài tập đồng thời rèn luyện kỹ năng tin học qua lập trình.</p>
+
+        <!-- Chia thành ba phần dưới (Văn bản, Video, Album ảnh) -->
+        <div class="section">
+            <!-- Phần 1: Chèn văn bản -->
+            <div class="section-background">
+                <h2>Văn bản Giới thiệu</h2>
+                <p>Đây là phần văn bản giới thiệu thêm về nhóm.</p>
+            </div>
+
+            <!-- Phần 2: Chèn video -->
+            <div class="section-background">
+                <h2>Video Giới thiệu</h2>
+                <video width="300" controls>
+                    <source src="your-video-url.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- Phần 3: Album ảnh với hiệu ứng băng chuyền -->
+            <div class="section-background">
+                <h2>Album ảnh</h2>
+                <div class="album">
+                    <div class="album-images" id="albumImages">
+                        <img src="image1.jpg" alt="Ảnh 1">
+                        <img src="image2.jpg" alt="Ảnh 2">
+                        <img src="image3.jpg" alt="Ảnh 3">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Danh sách thành viên và đếm ngược kỳ thi -->
         <div class="list-container">
