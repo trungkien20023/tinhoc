@@ -5,35 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giải bài tập Tin học 12</title>
     <style>
+        /* Tổng quan */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
             min-height: 100vh;
             overflow-x: hidden;
+            line-height: 1.6;
+            color: #333;
         }
 
+        /* Header */
         header {
-            background-color: #4CAF50; /* Màu nền xanh lá */
-            color: #fff;
-            padding: 15px 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
         }
 
         nav a {
-            color: #fff;
+            color: white;
             background-color: #333;
-            padding: 10px 20px;
+            padding: 12px 20px;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 10px;
-            display: inline-block;
             transition: background-color 0.3s ease;
         }
 
@@ -41,31 +45,29 @@
             background-color: #45a049;
         }
 
+        /* Main content area */
         main {
             padding: 20px;
-            min-height: calc(100vh - 120px); /* Điều chỉnh để tránh footer gây cản trở */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: calc(100vh - 150px);
         }
 
         .exercise {
-            background-color: #fff;
-            border-radius: 5px;
+            background-color: white;
+            border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeIn 2s ease-out forwards;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .answer {
-            display: none;
-            background-color: #e7f4e7;
-            border: 2px solid #4CAF50;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        .exercise:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
+        /* Style for the button to toggle answers */
         button.btn-toggle {
             background-color: #4CAF50;
             color: white;
@@ -73,14 +75,39 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         button.btn-toggle:hover {
             background-color: #45a049;
+            transform: scale(1.05);
         }
 
+        /* Answer section */
+        .answer {
+            display: none;
+            background-color: #e7f4e7;
+            border: 2px solid #4CAF50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        pre code {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Smooth fade-in effect */
         @keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -91,6 +118,11 @@
                 transform: translateY(0);
             }
         }
+
+        .exercise {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
     </style>
 </head>
 <body>
@@ -105,6 +137,7 @@
         <!-- Section Luyện tập -->
         <section class="exercise">
             <h2>Luyện tập</h2>
+            <!-- Bài 1 -->
             <p><strong>Bài 1:</strong> Giải thích sự khác nhau giữa hai định dạng sau:</p>
             <img src="luyen-tap-1-trang-101-tin-hoc-12.png" alt="Ảnh Luyện tập 1 Trang 101 Tin học 12" />
             <button class="btn-toggle">Hiện lời giải</button>
@@ -116,9 +149,25 @@
             </div>
         </section>
 
+        <!-- Section Luyện tập -->
+        <section class="exercise">
+            <p><strong>Bài 2:</strong> Trong phần Thực hành, các tên riêng (tên người, tên tổ chức) cần được bổ sung định dạng đóng khung và in nghiêng. Em sẽ thực hiện các yêu cầu này như thế nào?</p>
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+                <pre><code>.name {
+    font-style: italic; /* In nghiêng */
+    border: 1px solid #000; /* Đóng khung bằng đường viền màu đen */
+    padding: 2px; /* Thêm đệm xung quanh nội dung để không quá sát viền */
+    display: inline-block; /* Đảm bảo viền ôm sát nội dung */
+}</code></pre>
+            </div>
+        </section>
+
         <!-- Section Vận dụng -->
         <section class="exercise">
             <h2>Vận dụng</h2>
+            <!-- Bài 1 -->
             <p><strong>Bài 1:</strong> Tìm hiểu thêm các dạng pseudo-class khác, nêu ý nghĩa và tìm ví dụ ứng dụng thực tế cho các kiểu bộ chọn này ?</p>
             <button class="btn-toggle">Hiện lời giải</button>
             <div class="answer">
@@ -127,6 +176,16 @@
                 <p>- :active - Dạng pseudo-class này được kích hoạt khi phần tử đang được nhấn (khi người dùng giữ chuột trái). Em có thể sử dụng nó để áp dụng các định dạng CSS khi phần tử đang ở trạng thái active.</p>
                 <p>- :focus - Dạng pseudo-class này được kích hoạt khi phần tử đang trong trạng thái focus (thường xảy ra khi người dùng click hoặc sử dụng phím tab để di chuyển đến phần tử). Em có thể sử dụng nó để áp dụng các định dạng CSS khi phần tử đang trong trạng thái focus.</p>
                 <p>- :nth-child() - Dạng pseudo-class này cho phép bạn chọn các phần tử con trong một phần tử cha dựa trên vị trí của chúng. Bạn có thể sử dụng nó để áp dụng các định dạng CSS cho phần tử con cụ thể.</p>
+            </div>
+
+            <!-- Bài 2 -->
+            <p><strong>Bài 2:</strong> Tìm hiểu thêm các dạng pseudo-element khác, nêu ý nghĩa và tìm ví dụ ứng dụng thực tế cho các kiểu bộ chọn này.</p>
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+                <p>- ::before - Dạng pseudo-element này cho phép bạn chèn nội dung vào phần tử trước nội dung chính của nó. Em có thể sử dụng nó để thêm các biểu tượng, ký hiệu hoặc phần tử trang trí trước một phần tử.</p>
+                <p>- ::after - Dạng pseudo-element này cho phép bạn chèn nội dung vào phần tử sau nội dung chính của nó. Em có thể sử dụng nó để thêm các phần tử trang trí hoặc hiệu ứng sau một phần tử.</p>
+                <p>- ::first-line - Dạng pseudo-element này cho phép bạn áp dụng các định dạng CSS cho dòng đầu tiên của một phần tử chứa nội dung văn bản. Em có thể sử dụng nó để thay đổi kiểu chữ, khoảng cách dòng, hoặc các thuộc tính khác cho dòng đầu tiên.</p>
             </div>
         </section>
     </main>
