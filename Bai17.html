@@ -48,7 +48,7 @@
 
         /* Header */
         header {
-            background-color: #4CAF50;
+            background-color: #1E90FF; /* Xanh nước biển */
             color: white;
             padding: 20px;
             text-align: center;
@@ -98,7 +98,7 @@
 
         /* Style for the button to toggle answers */
         button.btn-toggle {
-            background-color: #4CAF50;
+            background-color: #1E90FF; /* Xanh nước biển */
             color: white;
             padding: 10px 15px;
             border: none;
@@ -109,7 +109,7 @@
         }
 
         button.btn-toggle:hover {
-            background-color: #45a049;
+            background-color: #4682B4; /* Màu xanh nước biển đậm */
             transform: scale(1.05);
         }
 
@@ -117,7 +117,7 @@
         .answer {
             display: none;
             background-color: #e7f4e7;
-            border: 2px solid #4CAF50;
+            border: 2px solid #1E90FF; /* Xanh nước biển */
             padding: 15px;
             border-radius: 5px;
             margin-top: 15px;
@@ -152,13 +152,32 @@
             animation: fadeIn 1s ease-out forwards;
         }
 
+        /* Button Quay lại */
+        .btn-back {
+            background-color: #FF6347; /* Màu đỏ tươi */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #FF4500; /* Màu đỏ cam */
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
     <!-- Banner Section (Video) -->
     <div class="banner">
         <video autoplay loop muted>
-            <source src="964df1d1e8c1bc21f634c7e268a2748e.mp4" type="video/mp4"> <!-- Thay đổi link video -->
+            <source src="your-video.mp4" type="video/mp4"> <!-- Thay đổi link video -->
             Video không được hỗ trợ trên trình duyệt của bạn.
         </video>
         <div class="banner-content">
@@ -228,6 +247,12 @@
                 <p>- ::first-line - Dạng pseudo-element này cho phép bạn áp dụng các định dạng CSS cho dòng đầu tiên của một phần tử chứa nội dung văn bản. Em có thể sử dụng nó để thay đổi kiểu chữ, khoảng cách dòng, hoặc các thuộc tính khác cho dòng đầu tiên.</p>
             </div>
         </section>
+
+        <!-- Nút quay lại trang chọn bài tập -->
+        <a href="select-exercises.html">
+            <button class="btn-back">Quay lại trang chọn bài tập</button>
+        </a>
+
     </main>
 
     <script>
