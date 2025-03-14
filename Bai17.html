@@ -10,25 +10,25 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            min-height: 100vh; /* Đảm bảo chiều cao ít nhất bằng chiều cao cửa sổ trình duyệt */
-            overflow-x: hidden; /* Ẩn cuộn ngang nếu không cần */
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         header {
-            background-color: #333;
+            background-color: #4CAF50; /* Màu nền xanh lá */
             color: #fff;
             padding: 15px 20px;
             text-align: center;
-            animation: fadeIn 1s ease-out;
         }
 
         header h1 {
             margin: 0;
+            font-size: 2rem;
         }
 
         nav a {
             color: #fff;
-            background-color: #4CAF50;
+            background-color: #333;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
@@ -43,19 +43,7 @@
 
         main {
             padding: 20px;
-            animation: fadeIn 1.5s ease-out;
-            min-height: calc(100vh - 120px); /* Chiều cao tối thiểu của main sẽ thay đổi theo nội dung */
-            margin-bottom: 100px; /* Đảm bảo footer không che nội dung */
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: #fff;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            min-height: calc(100vh - 120px); /* Điều chỉnh để tránh footer gây cản trở */
         }
 
         .exercise {
@@ -66,16 +54,6 @@
             margin-bottom: 20px;
             opacity: 0;
             animation: fadeIn 2s ease-out forwards;
-            max-width: 100%; /* Đảm bảo không có giới hạn chiều rộng */
-            box-sizing: border-box;
-        }
-
-        .exercise:nth-child(odd) {
-            animation-delay: 0.3s;
-        }
-
-        .exercise:nth-child(even) {
-            animation-delay: 0.5s;
         }
 
         .answer {
@@ -86,8 +64,6 @@
             border-radius: 5px;
             margin-top: 10px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            max-height: 400px;
-            overflow-y: auto; /* Cuộn nội dung của phần lời giải */
         }
 
         button.btn-toggle {
@@ -105,7 +81,6 @@
             background-color: #45a049;
         }
 
-        /* Hiệu ứng fade-in cho phần tử */
         @keyframes fadeIn {
             0% {
                 opacity: 0;
@@ -116,24 +91,6 @@
                 transform: translateY(0);
             }
         }
-
-        /* Hiệu ứng cho lời giải */
-        @keyframes fadeInAnswer {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        /* Hiệu ứng hover cho các phần tử */
-        .exercise:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transform: scale(1.02);
-            transition: all 0.3s ease;
-        }
-
     </style>
 </head>
 <body>
@@ -157,18 +114,6 @@
                 <p>- "#p123+ p": Đây là một selector có kết hợp giữa ID selector và sibling combinator. Nó chọn các phần tử p là anh em liền kề (sibling) của phần tử có ID là "p123".</p>
                 <p>-"h2#p123 + p": Đây là một selector có kết hợp giữa element selector (h2), ID selector và sibling combinator. Nó chọn các phần tử p là anh em liền kề của phần tử h2 có ID là "p123". </p>
             </div>
-
-            <p><strong>Bài 2:</strong> Trong phần Thực hành, các tên riêng (tên người, tên tổ chức) cần được bổ sung định dạng đóng khung và in nghiêng. Em sẽ thực hiện các yêu cầu này như thế nào?</p>
-            <button class="btn-toggle">Hiện lời giải</button>
-            <div class="answer">
-                <h3>Giải:</h3>
-                <pre><code>.name {
-    font-style: italic; /* In nghiêng */
-    border: 1px solid #000; /* Đóng khung bằng đường viền màu đen */
-    padding: 2px; /* Thêm đệm xung quanh nội dung để không quá sát viền */
-    display: inline-block; /* Đảm bảo viền ôm sát nội dung */
-}</code></pre>
-            </div>
         </section>
 
         <!-- Section Vận dụng -->
@@ -183,21 +128,8 @@
                 <p>- :focus - Dạng pseudo-class này được kích hoạt khi phần tử đang trong trạng thái focus (thường xảy ra khi người dùng click hoặc sử dụng phím tab để di chuyển đến phần tử). Em có thể sử dụng nó để áp dụng các định dạng CSS khi phần tử đang trong trạng thái focus.</p>
                 <p>- :nth-child() - Dạng pseudo-class này cho phép bạn chọn các phần tử con trong một phần tử cha dựa trên vị trí của chúng. Bạn có thể sử dụng nó để áp dụng các định dạng CSS cho phần tử con cụ thể.</p>
             </div>
-
-            <p><strong>Bài 2:</strong> Tìm hiểu thêm các dạng pseudo-element khác, nêu ý nghĩa và tìm ví dụ ứng dụng thực tế cho các kiểu bộ chọn này.</p>
-            <button class="btn-toggle">Hiện lời giải</button>
-            <div class="answer">
-                <h3>Giải:</h3>
-                <p>- ::before - Dạng pseudo-element này cho phép bạn chèn nội dung vào phần tử trước nội dung chính của nó. Em có thể sử dụng nó để thêm các biểu tượng, ký hiệu hoặc phần tử trang trí trước một phần tử.</p>
-                <p>- ::after - Dạng pseudo-element này cho phép bạn chèn nội dung vào phần tử sau nội dung chính của nó. Em có thể sử dụng nó để thêm các phần tử trang trí hoặc hiệu ứng sau một phần tử.</p>
-                <p>- ::first-line - Dạng pseudo-element này cho phép bạn áp dụng các định dạng CSS cho dòng đầu tiên của một phần tử chứa nội dung văn bản. Em có thể sử dụng nó để thay đổi kiểu chữ, khoảng cách dòng, hoặc các thuộc tính khác cho dòng đầu tiên.</p>
-            </div>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2025 - Tin học 12 - Bài tập</p>
-    </footer>
 
     <script>
         // JavaScript để bật/tắt lời giải
