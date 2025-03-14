@@ -10,7 +10,8 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s ease;
+            min-height: 100vh; /* Đảm bảo chiều cao ít nhất bằng chiều cao cửa sổ trình duyệt */
+            overflow-x: hidden; /* Ẩn cuộn ngang nếu không cần */
         }
 
         header {
@@ -43,38 +44,8 @@
         main {
             padding: 20px;
             animation: fadeIn 1.5s ease-out;
-        }
-
-        .exercise {
-            background-color: #fff;
-            border-radius: 5px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeIn 2s ease-out forwards;
-        }
-
-        .exercise:nth-child(odd) {
-            animation-delay: 0.3s;
-        }
-
-        .exercise:nth-child(even) {
-            animation-delay: 0.5s;
-        }
-
-        h2 {
-            color: #333;
-        }
-
-        h3 {
-            color: #555;
-        }
-
-        code {
-            background-color: #f4f4f4;
-            padding: 5px 10px;
-            border-radius: 5px;
+            min-height: calc(100vh - 120px); /* Chiều cao tối thiểu của main sẽ thay đổi theo nội dung */
+            margin-bottom: 100px; /* Đảm bảo footer không che nội dung */
         }
 
         footer {
@@ -87,6 +58,26 @@
             bottom: 0;
         }
 
+        .exercise {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+            max-width: 100%; /* Đảm bảo không có giới hạn chiều rộng */
+            box-sizing: border-box;
+        }
+
+        .exercise:nth-child(odd) {
+            animation-delay: 0.3s;
+        }
+
+        .exercise:nth-child(even) {
+            animation-delay: 0.5s;
+        }
+
         .answer {
             display: none;
             background-color: #e7f4e7;
@@ -96,9 +87,7 @@
             margin-top: 10px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             max-height: 400px;
-            overflow: auto;
-            opacity: 0;
-            animation: fadeInAnswer 0.5s ease-out forwards;
+            overflow-y: auto; /* Cuộn nội dung của phần lời giải */
         }
 
         button.btn-toggle {
@@ -151,7 +140,7 @@
     <header>
         <h1>Giải bài tập Tin học 12</h1>
         <nav>
-            <a href="Giải bài tập.html" class="btn-back-home">Các bài tập khác</a>
+            <a href="index.html" class="btn-back-home">Trang chủ</a>
         </nav>
     </header>
 
@@ -161,7 +150,7 @@
             <h2>Luyện tập</h2>
             <p><strong>Bài 1:</strong> Giải thích sự khác nhau giữa hai định dạng sau:</p>
             <img src="luyen-tap-1-trang-101-tin-hoc-12.png" alt="Ảnh Luyện tập 1 Trang 101 Tin học 12" />
-            <button class="btn-toggle">Lời giải</button>
+            <button class="btn-toggle">Hiện lời giải</button>
             <div class="answer">
                 <h3>Giải:</h3>
                 <p>Hai định dạng CSS "#p123+ p" và "h2#p123 + p" khác nhau về cách chọn phần tử HTML để áp dụng định dạng.</p>
@@ -170,7 +159,7 @@
             </div>
 
             <p><strong>Bài 2:</strong> Trong phần Thực hành, các tên riêng (tên người, tên tổ chức) cần được bổ sung định dạng đóng khung và in nghiêng. Em sẽ thực hiện các yêu cầu này như thế nào?</p>
-            <button class="btn-toggle">Lời giải</button>
+            <button class="btn-toggle">Hiện lời giải</button>
             <div class="answer">
                 <h3>Giải:</h3>
                 <pre><code>.name {
@@ -186,7 +175,7 @@
         <section class="exercise">
             <h2>Vận dụng</h2>
             <p><strong>Bài 1:</strong> Tìm hiểu thêm các dạng pseudo-class khác, nêu ý nghĩa và tìm ví dụ ứng dụng thực tế cho các kiểu bộ chọn này ?</p>
-            <button class="btn-toggle">Lời giải</button>
+            <button class="btn-toggle">Hiện lời giải</button>
             <div class="answer">
                 <h3>Giải:</h3>
                 <p>- :hover - Dạng pseudo-class này được kích hoạt khi người dùng di chuột qua một phần tử. Nó cho phép em áp dụng các định dạng CSS khi phần tử đang được hover.</p>
@@ -196,7 +185,7 @@
             </div>
 
             <p><strong>Bài 2:</strong> Tìm hiểu thêm các dạng pseudo-element khác, nêu ý nghĩa và tìm ví dụ ứng dụng thực tế cho các kiểu bộ chọn này.</p>
-            <button class="btn-toggle">Lời giải</button>
+            <button class="btn-toggle">Hiện lời giải</button>
             <div class="answer">
                 <h3>Giải:</h3>
                 <p>- ::before - Dạng pseudo-element này cho phép bạn chèn nội dung vào phần tử trước nội dung chính của nó. Em có thể sử dụng nó để thêm các biểu tượng, ký hiệu hoặc phần tử trang trí trước một phần tử.</p>
@@ -211,20 +200,15 @@
     </footer>
 
     <script>
-        // JavaScript để hiển thị/ẩn phần lời giải cho tất cả các bài
-        document.querySelectorAll('.btn-toggle').forEach(function(button) {
+        // JavaScript để bật/tắt lời giải
+        const toggleButtons = document.querySelectorAll('.btn-toggle');
+        toggleButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const answerDiv = this.nextElementSibling; // Lấy phần tử div chứa lời giải
-
-                // Kiểm tra và thay đổi trạng thái hiển thị của phần lời giải
-                if (answerDiv.style.display === 'none') {
-                    answerDiv.style.display = 'block';
-                    answerDiv.classList.add('fadeInAnswer');
-                    this.textContent = 'Ẩn lời giải'; // Thay đổi văn bản nút thành "Ẩn lời giải"
-                    window.scrollTo(0, document.body.scrollHeight); // Cuộn trang xuống cuối để xem nội dung
+                const answer = button.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
                 } else {
-                    answerDiv.style.display = 'none';
-                    this.textContent = 'Lời giải'; // Thay đổi văn bản nút thành "Hiện lời giải"
+                    answer.style.display = 'block';
                 }
             });
         });
