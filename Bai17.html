@@ -76,7 +76,7 @@
 </head>
 <body>
     <header>
-        <h1>Giải bài tập Tin học 12 - Thực hành trang 84</h1>
+        <h1>Giải bài tập Tin học 12 </h1>
         <nav>
             <a href="index.html" class="btn-back-home">Trang chủ</a>
         </nav>
@@ -86,15 +86,48 @@
         <section class="exercise">
             <h2>Luyện tập</h2>
             <p><strong>Bài 1:</strong> Giải thích sự khác nhau giữa hai định dạng sau:</p>
-            
+            <img src="luyen-tap-1-trang-101-tin-hoc-12.png" alt="Ảnh Luyện tập 1 Trang 101 Tin học 12" />
             <h3>Giải:</h3>
-            <p>Để tính tổng các số từ 1 đến 100, chúng ta có thể sử dụng vòng lặp <code>for</code> trong Java như sau:</p>
-            <p>Kết quả sẽ là: <strong>Tổng các số từ 1 đến 100 là: 5050</strong></p>
+            <p>Hai định dạng CSS "#p123+ p" và "h2#p123 + p" khác nhau về cách chọn phần tử HTML để áp dụng định dạng.</p>
+
+            <p>- "#p123+ p": Đây là một selector có kết hợp giữa ID selector và sibling combinator. Nó chọn các phần tử p là anh em liền kề (sibling) của phần tử có ID là "p123".</p>
+            <p>-"h2#p123 + p": Đây là một selector có kết hợp giữa element selector (h2), ID selector và sibling combinator. Nó chọn các phần tử p là anh em liền kề của phần tử h2 có ID là "p123". </p>
+            <p><strong>Bài 2:Trong phần Thực hành, các tên riêng (tên người, tên tổ chức) cần được bổ sung định dạng đóng khung và in nghiêng. Em sẽ thực hiện các yêu cầu này như thế nào?</strong>
+            <h3>Giải:</h3>
+                <pre><code>.name {
+
+  font-style: italic; /* In nghiêng */
+
+  border: 1px solid #000; /* Đóng khung bằng đường viền màu đen */
+
+  padding: 2px; /* Thêm đệm xung quanh nội dung để không quá sát viền */
+
+  display: inline-block; /* Đảm bảo viền ôm sát nội dung */
+
+}
+                    </code></pre>
+            <h2>Vận dụng</h2>
+            <p><strong>Bài 1:</strong> Tìm hiểu thêm các dạng pseudo-class khác, nêu ý nghĩa và tìm ví dụ ứng dụng thực tế cho các kiểu bộ chọn này ?</p>
+            <h3>Giải:</h3>
+            <p>- :hover - Dạng pseudo-class này được kích hoạt khi người dùng di chuột qua một phần tử. Nó cho phép em áp dụng các định dạng CSS khi phần tử đang được hover</p>
+
+            <p>- :active - Dạng pseudo-class này được kích hoạt khi phần tử đang được nhấn (khi người dùng giữ chuột trái). Em có thể sử dụng nó để áp dụng các định dạng CSS khi phần tử đang ở trạng thái active.</p>
+
+            <p>- :focus - Dạng pseudo-class này được kích hoạt khi phần tử đang trong trạng thái focus (thường xảy ra khi người dùng click hoặc sử dụng phím tab để di chuyển đến phần tử). em có thể sử dụng nó để áp dụng các định dạng CSS khi phần tử đang trong trạng thái focus.</p>
+
+            <p>- :nth-child() - Dạng pseudo-class này cho phép bạn chọn các phần tử con trong một phần tử cha dựa trên vị trí của chúng. Bạn có thể sử dụng nó để áp dụng các định dạng CSS cho phần tử con cụ thể.</p>
+            <p><strong>Bài 2:</strong> Tìm hiểu thêm các dạng pseuso-element khác, nêu ý nghĩa và tìm ví dụ ứng dụng thực tế cho các kiểu bộ chọn này.</p>
+            <h3>Giải:</h3>
+            <p>- ::before - Dạng pseudo-element này cho phép bạn chèn nội dung vào phần tử trước nội dung chính của nó. Em có thể sử dụng nó để thêm các biểu tượng, ký hiệu hoặc phần tử trang trí trước một phần tử.</p>
+
+            <p>- ::after - Dạng pseudo-element này cho phép bạn chèn nội dung vào phần tử sau nội dung chính của nó. Em có thể sử dụng nó để thêm các phần tử trang trí hoặc hiệu ứng sau một phần tử.</p>
+
+            <p>- ::first-line - Dạng pseudo-element này cho phép bạn áp dụng các định dạng CSS cho dòng đầu tiên của một phần tử chứa nội dung văn bản. Em có thể sử dụng nó để thay đổi kiểu chữ, khoảng cách dòng, hoặc các thuộc tính khác cho dòng đầu tiên.</p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 - Tin học 12 - Khối lượng bài tập</p>
+        <p>&copy; 2025 - Tin học 12 - Bài tập</p>
     </footer>
 
     <script>
