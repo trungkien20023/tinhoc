@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải bài tập Tin học 12</title>
+    <style>
+        /* CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav a {
+            color: #fff;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #45a049;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .exercise {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        h3 {
+            color: #555;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Giải bài tập Tin học 12 - Thực hành trang 84</h1>
+        <nav>
+            <a href="index.html" class="btn-back-home">Quay về Trang Chủ</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="exercise">
+            <h2>Bài tập</h2>
+            <p><strong>Bài 1:</strong> Tính tổng các số từ 1 đến 100 sử dụng vòng lặp trong ngôn ngữ lập trình Java.</p>
+            
+            <h3>Giải:</h3>
+            <p>Để tính tổng các số từ 1 đến 100, chúng ta có thể sử dụng vòng lặp <code>for</code> trong Java như sau:</p>
+
+            <pre>
+<code>
+public class Main {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 1; i <= 100; i++) {
+            sum += i;
+        }
+        System.out.println("Tổng các số từ 1 đến 100 là: " + sum);
+    }
+}
+</code>
+            </pre>
+            <p>Kết quả sẽ là: <strong>Tổng các số từ 1 đến 100 là: 5050</strong></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 - Tin học 12 - Khối lượng bài tập</p>
+    </footer>
+
+    <script>
+        // JavaScript (Optional)
+        document.querySelector('.btn-back-home').addEventListener('click', function() {
+            window.location.href = "index.html"; // Quay về trang chủ
+        });
+    </script>
+</body>
+</html>
