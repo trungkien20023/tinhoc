@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giải bài tập Tin học 12</title>
     <style>
-        /* CSS */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s ease;
         }
 
         header {
@@ -18,6 +18,7 @@
             color: #fff;
             padding: 15px 20px;
             text-align: center;
+            animation: fadeIn 1s ease-out;
         }
 
         header h1 {
@@ -32,6 +33,7 @@
             border-radius: 5px;
             margin-top: 10px;
             display: inline-block;
+            transition: background-color 0.3s ease;
         }
 
         nav a:hover {
@@ -40,6 +42,7 @@
 
         main {
             padding: 20px;
+            animation: fadeIn 1.5s ease-out;
         }
 
         .exercise {
@@ -47,6 +50,17 @@
             border-radius: 5px;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        .exercise:nth-child(odd) {
+            animation-delay: 0.3s;
+        }
+
+        .exercise:nth-child(even) {
+            animation-delay: 0.5s;
         }
 
         h2 {
@@ -73,15 +87,18 @@
             bottom: 0;
         }
 
-        /* CSS phần ẩn lời giải */
         .answer {
-            display: none; /* Lúc đầu sẽ ẩn phần lời giải */
-            background-color: #e7f4e7; /* Nền màu xanh nhạt */
-            border: 2px solid #4CAF50; /* Khung viền màu xanh */
-            padding: 15px; /* Thêm đệm cho nội dung */
-            border-radius: 5px; /* Bo góc cho khung */
-            margin-top: 10px; /* Khoảng cách trên */
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+            display: none;
+            background-color: #e7f4e7;
+            border: 2px solid #4CAF50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+            overflow: auto;
+            opacity: 0;
+            animation: fadeInAnswer 0.5s ease-out forwards;
         }
 
         button.btn-toggle {
@@ -92,22 +109,54 @@
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
+            transition: background-color 0.3s ease;
         }
 
         button.btn-toggle:hover {
             background-color: #45a049;
         }
+
+        /* Hiệu ứng fade-in cho phần tử */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hiệu ứng cho lời giải */
+        @keyframes fadeInAnswer {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Hiệu ứng hover cho các phần tử */
+        .exercise:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+
     </style>
 </head>
 <body>
     <header>
         <h1>Giải bài tập Tin học 12</h1>
         <nav>
-            <a href="index.html" class="btn-back-home">Bài tập SGK khác</a>
+            <a href="Giải bài tập.html" class="btn-back-home">Các bài tập khác</a>
         </nav>
     </header>
 
     <main>
+        <!-- Section Luyện tập -->
         <section class="exercise">
             <h2>Luyện tập</h2>
             <p><strong>Bài 1:</strong> Giải thích sự khác nhau giữa hai định dạng sau:</p>
@@ -131,7 +180,10 @@
     display: inline-block; /* Đảm bảo viền ôm sát nội dung */
 }</code></pre>
             </div>
+        </section>
 
+        <!-- Section Vận dụng -->
+        <section class="exercise">
             <h2>Vận dụng</h2>
             <p><strong>Bài 1:</strong> Tìm hiểu thêm các dạng pseudo-class khác, nêu ý nghĩa và tìm ví dụ ứng dụng thực tế cho các kiểu bộ chọn này ?</p>
             <button class="btn-toggle">Lời giải</button>
@@ -167,10 +219,12 @@
                 // Kiểm tra và thay đổi trạng thái hiển thị của phần lời giải
                 if (answerDiv.style.display === 'none') {
                     answerDiv.style.display = 'block';
+                    answerDiv.classList.add('fadeInAnswer');
                     this.textContent = 'Ẩn lời giải'; // Thay đổi văn bản nút thành "Ẩn lời giải"
+                    window.scrollTo(0, document.body.scrollHeight); // Cuộn trang xuống cuối để xem nội dung
                 } else {
                     answerDiv.style.display = 'none';
-                    this.textContent = 'Hiện lời giải'; // Thay đổi văn bản nút thành "Hiện lời giải"
+                    this.textContent = 'Lời giải'; // Thay đổi văn bản nút thành "Hiện lời giải"
                 }
             });
         });
