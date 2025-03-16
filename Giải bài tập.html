@@ -13,6 +13,15 @@
             padding: 0;
             color: black;
         }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
 
 
         .navbar {
@@ -120,9 +129,18 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .tab-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
+        <video class="video-background" autoplay muted loop poster="fallback.jpg">
+        <source src="9584-220312371.mp4" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ thẻ video.
+    </video>
+
 
     <div class="navbar">
         <button class="home-button" onclick="goHome()">Trang chủ</button>
@@ -349,6 +367,10 @@
     <script>
         function goHome() {
             window.location.href = 'index.html';
+        }
+         function openTab(event, tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
         }
     </script>
 </body>
