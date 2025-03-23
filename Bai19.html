@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 19</title>
+    <style>
+        /* Tổng quan */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Banner */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .banner video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Header */
+        header {
+            background-color: #1E90FF; /* Xanh nước biển */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: white;
+            background-color: #333;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #45a049;
+        }
+
+        /* Main content area */
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: calc(100vh - 150px);
+        }
+
+        .exercise {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .exercise:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Style for the button to toggle answers */
+        button.btn-toggle {
+            background-color: #1E90FF; /* Xanh nước biển */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button.btn-toggle:hover {
+            background-color: #4682B4; /* Màu xanh nước biển đậm */
+            transform: scale(1.05);
+        }
+
+        /* Answer section */
+        .answer {
+            display: none;
+            background-color: #e7f4e7;
+            border: 2px solid #1E90FF; /* Xanh nước biển */
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        pre code {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Smooth fade-in effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .exercise {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Button Quay lại */
+        .btn-back {
+            background-color: #FF6347; /* Màu đỏ tươi */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #FF4500; /* Màu đỏ cam */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Section (Video) -->
+    <div class="banner">
+        <video autoplay loop muted>
+            <source src="964df1d1e8c1bc21f634c7e268a2748e.mp4" type="video/mp4"> <!-- Thay đổi link video -->
+            Video không được hỗ trợ trên trình duyệt của bạn.
+        </video>
+        <div class="banner-content">
+    
+        </div>
+    </div>
+
+    <header>
+
+        <nav>
+            <a href="index.html" class="btn-back-home">Trang chủ</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section Luyện tập -->
+        <section class="exercise">
+            <h2>Luyện tập</h2>
+            <!-- Bài 1 -->
+            <p><strong>Bài 1:</strong> Tìm kiếm trên Internet một vài thông tin tuyển dụng liên quan tới công việc sửa chữa và bảo trì máy tính. Đọc yêu cầu của họ về công việc, kiến thức, kĩ năng. So sánh với những gì em đã biết về công việc sửa chữa và bảo trì máy tính sau bài học này.</p>
+            <img src="luyen-tap-1-trang-101-tin-hoc-12.png" alt="Ảnh Luyện tập 1 Trang 101 Tin học 12" />
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+                <p>- Kiến thức về phần cứng máy tính: Hiểu về các linh kiện phần cứng, cấu trúc và hoạt động của máy tính.</p>
+                <p>- Kiến thức về phần mềm máy tính: Có hiểu biết cơ bản về hệ điều hành, phần mềm văn phòng và các ứng dụng thông dụng.</p>
+                <p>- Kỹ năng chẩn đoán và sửa chữa: Có khả năng xác định và giải quyết sự cố phần cứng và phần mềm trên máy tính.</p>
+                <p>- Kỹ năng giao tiếp: Có khả năng truyền đạt thông tin một cách rõ ràng và giao tiếp hiệu quả với khách hàng hoặc người dùng.</p>
+                <p>- Kỹ năng tìm kiếm và nghiên cứu: Có khả năng tìm kiếm thông tin và nghiên cứu các vấn đề kỹ thuật mới để giải quyết các vấn đề phức tạp.</p>
+                <p>- Kỹ năng quản lý thời gian: Có khả năng ưu tiên công việc và hoàn thành nhiệm vụ theo thời gian quy định.</p>
+                <p>- Kiến thức về bảo mật: Hiểu về các biện pháp bảo mật thông tin và có khả năng áp dụng các biện pháp bảo mật cơ bản trong công việc.</p>
+            </div>
+        </section>
+
+        <!-- Section Vận dụng -->
+        <section class="exercise">
+            <h2>Vận dụng</h2>
+            <p><strong>Bài 1:</strong> Chọn một nghề trong nhóm nghề dịch vụ trong ngành Công nghệ thông tin mà em quan tâm, chẳng hạn lập trình viên; kiểm thử viên; tư vấn, quản lí dự án công nghệ thông tin; phân tích dữ liệu; khôi phục dữ liệu,...</p>
+            <p>Thực hiện một báo cáo ngắn gọn (tối đa 1 trang A4) về thông tin hướng nghiệp của ngành nghề đó với các nội dung chính sau:</p>
+            <p>Tên ngành nghề.</p>
+            <p>Những nét sơ lược về công việc chính mà người làm nghề phải thực hiện.</p>
+            <p>- Yêu cầu thiết yếu về kiến thức và kĩ năng cần có để làm nghề.</p>
+            <p>Ngành học có liên quan ở các bậc học tiếp theo.</p>
+            <p>Nhu cầu nhân lực của xã hội trong hiện tại và tương lai gần về nhóm nghề đó.</p>
+            <p>Gợi ý: Tìm kiếm thông tin trên Internet, từ các chương trình đào tạo, thông báo tuyển dụng nhân lực liên quan đến ngành nghề em chọn. Chia sẻ báo cáo của em với bạn.</p>
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+    
+                <p>Ngành nghề: Lập trình viên
+<p>Những nét sơ lược về công việc chính mà người làm nghề phải thực hiện:</p>
+<p>Lập trình viên là người chịu trách nhiệm thiết kế, phát triển và duy trì các ứng dụng và hệ thống phần mềm. Công việc chính của lập trình viên bao gồm:</p>
+<p>Phân tích yêu cầu: Hiểu và phân tích yêu cầu của khách hàng hoặc người dùng để xác định các chức năng và tính năng cần thiết cho phần mềm.</p>
+<p>Thiết kế: Xây dựng cấu trúc và giao diện của phần mềm, bao gồm thiết kế cơ sở dữ liệu và luồng làm việc.</p>
+<p>Lập trình: Sử dụng ngôn ngữ lập trình và các công cụ phát triển để viết mã và triển khai các chức năng và tính năng vào phần mềm.</p>
+<p>Kiểm thử: Thực hiện các bài kiểm tra để đảm bảo tính ổn định và chất lượng của phần mềm.</p>
+<p>Bảo trì và nâng cấp: Sửa chữa lỗi, nâng cấp và cải thiện phần mềm hiện có.</p>
+<p>Yêu cầu thiết yếu về kiến thức và kỹ năng cần có để làm nghề:</p>
+<p>Kiến thức về ngôn ngữ lập trình: Có kiến thức sâu về ít nhất một ngôn ngữ lập trình như Java, C++, Python, JavaScript, v.v.</p>
+<p>Kiến thức về cấu trúc dữ liệu và thuật toán: Hiểu về các cấu trúc dữ liệu và thuật toán cơ bản để xử lý thông tin hiệu quả.</p>
+<p>Kiến thức về hệ điều hành và mạng: Hiểu về hệ điều hành và mạng để phát triển phần mềm tương thích và tương tác với các môi trường khác nhau.</p>
+<p>Kỹ năng phân tích và giải quyết vấn đề: Có khả năng phân tích vấn đề, tìm ra giải pháp phù hợp và triển khai nó trong mã nguồn.</p>
+<p>Kỹ năng làm việc nhóm: Có khả năng làm việc cộng tác trong nhóm, giao tiếp hiệu quả và chia sẻ kiến thức với các thành viên khác trong dự án.</p>
+<p>Ngành học có liên quan ở các bậc học tiếp theo:</p>
+<p>Đại học: Có thể chọn học Công nghệ thông tin, Khoa học máy tính hoặc các chương trình chuyên ngành liên quan đến lập trình và phát triển phần mềm.</p>
+<p>Các khóa học chuyên nghiệp và chứng chỉ: Có thể tham gia các khóa học về ngôn ngữ lập trình cụ thể, quản lý dự án phần mềm, kiểm thử phần mềm, v.v.</p>
+<p>Nhu cầu nhân lực của xã hội trong hiện tại và tương lai gần về nhóm nghề đó:</p>
+<p>Ngành Công nghệ thông tin đang trở thành một trong những ngành hot nhất và có nhu cầu nhân lực cao. Với sự phát triển của công nghệ thông tin và số hóa, nhu cầu về lập trình viên ngày càng tăng. Các công ty phần mềm, công ty công nghệ và các tổ chức khác đều đang tìm kiếm lập trình viên có kỹ năng và kiến thức phù hợp để phát triển và duy trì các ứng dụng và hệ thống phần mềm.</p>
+<p>Trên cơ sở thông tin có sẵn, ngành lập trình viên là một trong những ngành nghề quan trọng và có triển vọng trong lĩnh vực Công nghệ thông tin. Nhu cầu nhân lực trong ngành này đang tăng lên do sự phát triển của công nghệ. Điều này tạo ra nhiều cơ hội việc làm cho những người có kiến thức và kỹ năng lập trình.</p>
+<p>Tuy nhiên, để thành công trong ngành lập trình viên, không chỉ cần kiến thức vững chắc về lập trình mà còn cần có khả năng giải quyết vấn đề, tư duy logic, và kỹ năng làm việc nhóm. Các ngành học liên quan bao gồm Công nghệ thông tin, Khoa học máy tính và các chương trình chuyên ngành tương tự.</p>
+<p>Trong tương lai gần, dự kiến nhu cầu nhân lực trong nhóm nghề lập trình viên sẽ tiếp tục tăng lên do sự phát triển nhanh chóng của công nghệ và sự gia tăng của các dự án phần mềm. Việc đào tạo và nâng cao kỹ năng lập trình sẽ giúp em cạnh tranh và có nhiều cơ hội trong lĩnh vực này.</p>
+<p>Nếu em quan tâm đến ngành lập trình viên, tôi khuyên em nên tìm hiểu thêm về các chương trình đào tạo, khóa học và thông báo tuyển dụng liên quan để có cái nhìn tổng quan và cập nhật về ngành nghề này..</p>
+            </div>
+        </section>
+
+        <!-- Nút quay lại trang chọn bài tập -->
+        <a href="Giải bài tập.html">
+            <button class="btn-back">Các bài tập SGK khác </button>
+        </a>
+
+    </main>
+
+    <script>
+        // JavaScript để bật/tắt lời giải
+        const toggleButtons = document.querySelectorAll('.btn-toggle');
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const answer = button.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
