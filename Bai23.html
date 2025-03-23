@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 23</title>
+    <style>
+        /* Tổng quan */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Banner */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .banner video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Header */
+        header {
+            background-color: #1E90FF; /* Xanh nước biển */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: white;
+            background-color: #333;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #45a049;
+        }
+
+        /* Main content area */
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: calc(100vh - 150px);
+        }
+
+        .exercise {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .exercise:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Style for the button to toggle answers */
+        button.btn-toggle {
+            background-color: #1E90FF; /* Xanh nước biển */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button.btn-toggle:hover {
+            background-color: #4682B4; /* Màu xanh nước biển đậm */
+            transform: scale(1.05);
+        }
+
+        /* Answer section */
+        .answer {
+            display: none;
+            background-color: #e7f4e7;
+            border: 2px solid #1E90FF; /* Xanh nước biển */
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        pre code {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Smooth fade-in effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .exercise {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Button Quay lại */
+        .btn-back {
+            background-color: #FF6347; /* Màu đỏ tươi */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #FF4500; /* Màu đỏ cam */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Section (Video) -->
+    <div class="banner">
+        <video autoplay loop muted>
+            <source src="964df1d1e8c1bc21f634c7e268a2748e.mp4" type="video/mp4"> <!-- Thay đổi link video -->
+            Video không được hỗ trợ trên trình duyệt của bạn.
+        </video>
+        <div class="banner-content">
+    
+        </div>
+    </div>
+
+    <header>
+
+        <nav>
+            <a href="index.html" class="btn-back-home">Trang chủ</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section Luyện tập -->
+        <section class="exercise">
+            <h2>Luyện tập</h2>
+            <!-- Bài 1 -->
+            <p><strong>Bài 1:</strong>Hãy phân tích phần đầu trang và chân trang của trang web 24 giờ ở Hình 23.8 và chỉ rõ các vị trí các phần tử mà em nhận dạng được: tên trang, logo, favicon, bảng chọn,... Tóm tắt những thông tin được trình bày ở phần chân trang.</p>
+        
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+                <p>- Tên trang: 24h</p>
+ <p>Hãy phân tích phần đầu trang và chân trang của trang web 24 giờ ở Hình 23.8</p>
+ <p>- Liên hệ: Thông tin liên hệ như địa chỉ, số điện thoại, địa chỉ email của trang web hoặc công ty sở hữu trang web.</p>
+ <p>- Thông tin về trang web: Một số trang web cung cấp thông tin về bản quyền, điều khoản sử dụng, chính sách bảo mật và thông tin về trang web.</p>
+ <p>- Trợ giúp và câu hỏi thường gặp: Một số trang web có phần trợ giúp hoặc câu hỏi thường gặp để người dùng có thể tìm hiểu thêm về cách sử dụng trang web hoặc giải đáp các câu hỏi phổ biến.</p>
+ <p>- Liên kết xã hội: Các biểu tượng hoặc liên kết đến các trang mạng xã hội mà trang web sở hữu hỗ trợ, như Facebook, Twitter, Instagram, v.v.</p>
+ <p>- Quảng cáo và tài trợ: Một số trang web có phần hiển thị thông tin về quảng cáo và tài trợ, bao gồm các đối tác quảng cáo hoặc các chương trình liên kết.</p>
+ <p>- Thông tin pháp lý: Một số trang web có phần thông tin pháp lý như điều khoản sử dụng, chính sách bảo mật, chính sách bảo mật dữ liệu, v.v.</p>
+            </div>
+        </section>
+
+        <!-- Section Luyện tập -->
+        <section class="exercise">
+            <p><strong>Bài 2:</strong> Hãy vào website Tổng cục Du lịch Việt Nam (https://vietnamtourism.gov.vn). Phân tích thiết kế nội dung, bố cục, phông chữ, màu sắc và phát biểu nhận xét của mình.</p>
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+   <p> Thiết kế nội dung và bố cục:</p>
+<p>-Trang web của Tổng cục Du lịch Việt Nam được thiết kế có vẻ chuyên nghiệp và gọn gàng, với các mục chính như thông tin về du lịch Việt Nam, tin tức, sự kiện, hướng dẫn du lịch, và các dịch vụ khác.</p>
+<p>-Bố cục được tổ chức logic, dễ dàng điều hướng giữa các trang và phần thông tin khác nhau.</p>
+<p>-Phông chữ: Phông chữ được sử dụng có vẻ rõ ràng và dễ đọc, thường là các phông chữ không chấm biểu hiện tính chuyên nghiệp và hiện đại.</p>
+<p>-Màu sắc: Màu sắc được sử dụng có thể phản ánh nền văn hóa và thiên nhiên của Việt Nam, có thể là màu xanh lá cây, màu nước biển hoặc màu nâu đất. Những màu sắc như này thường gợi nhớ đến cảnh đẹp tự nhiên của quốc gia và tạo cảm giác yên bình cho người xem.</p>
+<p>- Phát biểu nhận xét: Tổng cục Du lịch Việt Nam có vẻ đã chú trọng vào việc thiết kế trang web để cung cấp thông tin một cách dễ tiếp cận và hấp dẫn đối với du khách. Tuy nhiên, có thể cần phải kiểm tra và cải thiện liên tục để đảm bảo trang web luôn cập nhật và phản ánh đúng với thị trường du lịch hiện nay.</p>
+            </div>
+        </section>
+
+        <!-- Section Vận dụng -->
+        <section class="exercise">
+            <h2>Vận dụng</h2>
+            <!-- Bài 1 -->
+            <p><strong>Bài 1:</strong> Hãy truy cập website của ít nhất 3 trường đại học trong danh sách các trường đại học sau:</p>
+<p>University of Massachusetts (https://www.massachusetts.edu).</p>
+<p>Stanford University (https://www.stanford.edu).</p>
+<p>Đại học Quốc gia Hà Nội (https://www.vnu.edu.vn).</p>
+<p>Đại học Quốc gia TP. Hồ Chí Minh (https://vnuhcm.edu.vn).</p>
+<p>Đại học Bách khoa Hà Nội (https://hust.edu.vn).</p>
+<p>Trường Đại học Cần Thơ (https://www.ctu.edu.vn).</p>
+<p>Đại học Đà Nẵng (https://www.udn.vn).</p>
+<p>Phân tích nội dung, bố cục, phông chữ, màu sắc và rút ra nhận xét của mình.</p>
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+                <p>1.University of Massachusetts (https://www.massachusetts.edu):</p>
+<p>Dựa trên dữ liệu từ trang web, trường có vẻ sử dụng một giao diện chuyên nghiệp và gọn gàng.</p>
+<p>Phông chữ có thể là các phông chữ dễ đọc và chuyên nghiệp.</p>
+<p>Màu sắc có thể tập trung vào các tông màu truyền thống của trường hoặc màu chủ đạo của trang web.</p>
+<p>Bố cục có thể được tổ chức một cách logic với các mục chính như giới thiệu, chương trình học, tin tức và sự kiện.</p>
+<p>2.Stanford University (https://www.stanford.edu):</p>
+<p>Trường có thể sử dụng giao diện hiện đại và sắc nét.</p>
+<p>Phông chữ có thể là các phông chữ sang trọng và dễ đọc.</p>
+<p>Màu sắc có thể phản ánh logo của trường và có thể sử dụng màu đỏ hoặc màu vàng như là các màu chủ đạo.</p>
+<p>Bố cục có thể được thiết kế một cách chuyên nghiệp và dễ dàng điều hướng.</p>
+<p>3. Đại học Quốc gia Hà Nội (https://www.vnu.edu.vn):</p>
+<p>Trường có thể sử dụng một giao diện đơn giản và chuyên nghiệp.</p>
+<p>Phông chữ có thể là các phông chữ dễ đọc và chính xác, phản ánh tính chất chính thống của trường.</p>
+<p>Màu sắc có thể phản ánh màu sắc của cờ đỏ sao vàng, một biểu tượng của Việt Nam.</p>
+<p>Bố cục có thể được thiết kế để hiển thị thông tin một cách rõ ràng và dễ dàng truy cập.</p>
+<p>Nhận xét: Các trường đại học thường cần sử dụng giao diện chuyên nghiệp, bố cục rõ ràng và màu sắc phù hợp để truyền đạt thông điệp của mình một cách hiệu quả. Tuy nhiên, sự khác biệt có thể nằm ở phong cách thiết kế và cách mà họ sử dụng các yếu tố thiết kế để phản ánh văn hóa và giá trị của mình.</p>
+            </div>
+
+            <!-- Bài 2 -->
+            <p><strong>Bài 2:</strong> “Những bài ca đi cùng năm tháng” là một đề tài làm trang web giới thiệu về những bản nhạc, nhạc sĩ, ca sĩ được các thế hệ công chúng yêu thích trong những giai đoạn đấu tranh giành độc lập và xây dựng đất nước của dân tộc ta. Em hãy phân tích, xây dựng ý tưởng thực hiện đề tài này và phác thảo thiết kế trang web cho đề tài này.</p>
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+                <p>- Mục tiêu: Xây dựng trang web giới thiệu về những bài hát, nhạc sĩ và ca sĩ được yêu thích trong quá trình đấu tranh giành độc lập và xây dựng đất nước của dân tộc Việt Nam.</p>
+<p>- Nội dung trang web:</p>
+<p>+ Trang chủ: Giới thiệu tổng quan về đề tài và những giai đoạn quan trọng trong lịch sử đấu tranh của dân tộc.</p>
+<p>+ Danh mục bài hát: Liệt kê các bài hát nổi tiếng và phổ biến đã truyền cảm hứng trong quá trình đấu tranh, được sắp xếp theo từng giai đoạn hoặc chủ đề.</p>
+<p>+ Nhạc sĩ và ca sĩ: Giới thiệu về những nhạc sĩ và ca sĩ có đóng góp quan trọng trong việc sáng tác và trình bày những bài hát mang tính biểu tượng trong lịch sử dân tộc.</p>
+<p>+ Các tài liệu liên quan: Cung cấp các tài liệu, sách, bài viết, video, hình ảnh liên quan đến các bài hát và những sự kiện lịch sử tương ứng.</p>
+<p>+ Diễn đàn và chia sẻ: Tạo một không gian cho người dùng để thảo luận, chia sẻ ý kiến và kỷ niệm về những bài hát và sự kiện liên quan.</p>
+<p>- Thiết kế trang web:</p>
+<p>- Giao diện: Sử dụng màu sắc và hình ảnh phù hợp với tinh thần của đề tài, kết hợp giữa các gam màu truyền thống và hình ảnh biểu tượng của những giai đoạn đấu tranh.</p>
+<p>- Bố cục: Tạo cấu trúc trang web rõ ràng, với menu điều hướng dễ sử dụng và các phần nội dung được tổ chức logic.</p>
+<p>- Đa phương tiện: Sử dụng âm nhạc, video và hình ảnh để tạo hiệu ứng trực quan và thu hút người dùng.</p>
+<p>- Tương tác: Cung cấp các công cụ tương tác như ô tìm kiếm, khung bình luận và chia sẻ trên mạng xã hội để tạo sự tham gia và tương tác của người dùng.</p>
+            </div>
+            <p><strong>Bài 3:</strong> Hãy tìm hiểu phần mềm hỗ trợ làm trang web của Google tại địa chỉ https://www. sites.google.com.</p>
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+                <p>- Mục tiêu: Xây dựng trang web giới thiệu về những bài hát, nhạc sĩ và ca sĩ được yêu thích trong quá trình đấu tranh giành độc lập và xây dựng đất nước của dân tộc Việt Nam.</p>
+<p>Dịch vụ này cung cấp một giao diện trực quan và không cần kỹ năng lập trình để sử dụng. Người dùng có thể chọn từ các mẫu được cung cấp sẵn và tùy chỉnh nội dung, bố cục và thiết kế của trang web của họ một cách linh hoạt.</p>
+<p>Các tính năng chính của Google Sites bao gồm:</p>
+<p>-Tạo trang web một cách dễ dàng thông qua giao diện trực quan.</p>
+<p>-Tích hợp dễ dàng với các dịch vụ Google khác như Google Drive, Google Calendar, Google Maps, vv.</p>
+<p>-Hỗ trợ thiết kế đáp ứng cho các thiết bị di động.</p>
+<p>-Chia sẻ trang web với người khác để cộng tác hoặc xem trước trang web trước khi xuất bản.</p>
+<p>-Khả năng tùy chỉnh định dạng, phông chữ, màu sắc và các yếu tố thiết kế khác.</p>
+<p>-Google Sites thường được sử dụng cho các mục đích như tạo trang web cá nhân, trang web dự án nhóm, trang web giáo dục, và nhiều hơn nữa. Điều quan trọng là dịch vụ này cung cấp một cách tiếp cận dễ dàng và không đòi hỏi kỹ năng kỹ thuật cao từ người dùng.</p>
+            </div>
+        </section>
+
+        <!-- Nút quay lại trang chọn bài tập -->
+        <a href="Giải bài tập.html">
+            <button class="btn-back">Các bài tập SGK khác </button>
+        </a>
+
+    </main>
+
+    <script>
+        // JavaScript để bật/tắt lời giải
+        const toggleButtons = document.querySelectorAll('.btn-toggle');
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const answer = button.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
