@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 22</title>
+    <style>
+        /* Tổng quan */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Banner */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .banner video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Header */
+        header {
+            background-color: #1E90FF; /* Xanh nước biển */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: white;
+            background-color: #333;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #45a049;
+        }
+
+        /* Main content area */
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: calc(100vh - 150px);
+        }
+
+        .exercise {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .exercise:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Style for the button to toggle answers */
+        button.btn-toggle {
+            background-color: #1E90FF; /* Xanh nước biển */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button.btn-toggle:hover {
+            background-color: #4682B4; /* Màu xanh nước biển đậm */
+            transform: scale(1.05);
+        }
+
+        /* Answer section */
+        .answer {
+            display: none;
+            background-color: #e7f4e7;
+            border: 2px solid #1E90FF; /* Xanh nước biển */
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        pre code {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Smooth fade-in effect */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .exercise {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Button Quay lại */
+        .btn-back {
+            background-color: #FF6347; /* Màu đỏ tươi */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #FF4500; /* Màu đỏ cam */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Section (Video) -->
+    <div class="banner">
+        <video autoplay loop muted>
+            <source src="964df1d1e8c1bc21f634c7e268a2748e.mp4" type="video/mp4"> <!-- Thay đổi link video -->
+            Video không được hỗ trợ trên trình duyệt của bạn.
+        </video>
+        <div class="banner-content">
+    
+        </div>
+    </div>
+
+    <header>
+
+        <nav>
+            <a href="index.html" class="btn-back-home">Trang chủ</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Section Luyện tập -->
+        <section class="exercise">
+            <h2>Luyện tập</h2>
+            <!-- Bài 1 -->
+            <p><strong>Bài 1:</strong> Sau khi đã ghép đôi thì điện thoại và máy tính có vai trò như nhau trong trao đổi dữ liệu. Phần hướng dẫn thực hành đã thực hiện việc gửi tệp từ máy tính sang điện thoại. Em hãy thực hành truyền một tệp ảnh từ điện thoại tới máy tính qua Bluetooth.</p>
+        
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+              
+                <video>
+                   <source src="chuyen.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <!-- Section Luyện tập -->
+        <section class="exercise">
+            <p><strong>Bài 2:</strong> Việc kết nối hai điện thoại bằng Bluetooth tương tự như kết nối máy tính với điện thoại. Em hãy thực hành kết nối hai điện thoại và chuyển một số tập ảnh giữa chúng.</p>
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+                <video>
+                   <source src="blue.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <!-- Section Vận dụng -->
+        <section class="exercise">
+            <h2>Vận dụng</h2>
+            <!-- Bài 1 -->
+            <p><strong>Bài 1:</strong> Trong Nhiệm vụ 1, em đã làm quen việc kết nối máy tính với ti vi hay máy chiếu qua cáp tín hiệu để làm màn hình mở rộng. Trong cửa sổ thiết lập chế độ làm việc với màn hình mở rộng còn có tuỳ chọn là kết nối không dây với thiết bị hiển thị. Hãy tìm hiểu và thực hiện việc kết nối không dây máy tính với ti vi (hoặc máy chiếu, bảng LED nếu có hỗ trợ kết nối không dây).</p>
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+                <video>
+                   <source src="Dttv.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Bài 2 -->
+            <p><strong>Bài 2:</strong> Vòng đeo tay thông minh (Smart Band) là thiết bị nhỏ gọn đeo ở cổ tay có chức năng thông báo thời gian, đo các chỉ số vận động, các chỉ số sức khoẻ và một số ứng dụng cá nhân khác. Đồng hồ thông minh cũng là một kiểu vòng tay thông minh nhưng kích thước đa dạng hơn, thường được thiết kế giống với đồng hồ, có nhiều tính năng như điện thoại thông minh. Các vòng tay thông minh nói chung có bộ nhớ và mức độ xử lí dữ liệu hạn chế, nhiều chức năng cần được thực hiện cùng với điện thoại hoặc máy tính. Vì là các thiết bị di động theo người nên chúng thường được kết nối với một điện thoại. Có một số loại vòng tay thông minh có thể kết nối với máy tính. Khi đã kết nối, người dùng có thể sử dụng phần mềm ứng dụng để quản lí và đồng bộ hoá dữ liệu từ các vòng tay thông minh với máy tính hoặc điện thoại.
+
+Nếu có điều kiện, em hãy tìm hiểu việc kết nối một vòng đeo tay hoặc đồng hồ thông minh với máy tính và điện thoại thông minh.
+
+</p>
+            <button class="btn-toggle">Hiện lời giải</button>
+            <div class="answer">
+                <h3>Giải:</h3>
+                 <video>
+                   <source src="dhtm.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <!-- Nút quay lại trang chọn bài tập -->
+        <a href="Giải bài tập.html">
+            <button class="btn-back">Các bài tập SGK khác </button>
+        </a>
+
+    </main>
+
+    <script>
+        // JavaScript để bật/tắt lời giải
+        const toggleButtons = document.querySelectorAll('.btn-toggle');
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const answer = button.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
